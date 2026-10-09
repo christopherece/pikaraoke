@@ -107,22 +107,19 @@ uv tool upgrade pikaraoke
 
 ## Docker instructions
 
-Run PiKaraoke in Docker using the command below. Note the requirements for port mapping, LAN IP specification, and persistent volume mounts (set to ~/.pikaraoke in the example for simplicity):
+Karaoke ni Lakay ships a `docker-compose.yml` that builds the image from this repository (the `vicwomg/pikaraoke` image on Docker Hub is upstream PiKaraoke, without this fork's branding):
 
 ```sh
-docker run -p 5555:5555 \
-  -e TZ=Europe/London \
-  -v ~/pikaraoke-songs:/app/pikaraoke-songs \
-  -v ~/.pikaraoke:/home/pikaraoke/.pikaraoke \
-  vicwomg/pikaraoke:latest \
-  -u http://<YOUR_LAN_IP>:5555
+git clone https://github.com/christopherece/pikaraoke.git karaoke-ni-lakay
+cd karaoke-ni-lakay
+cp .env.example .env    # set KNL_URL to http://<YOUR_LAN_IP>:5555
+mkdir -p songs data     # create before first start so the container can write to them
+docker compose up -d --build
 ```
 
-Set `TZ` to your own timezone, taken from the "TZ identifier" column of the [tz database list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+`KNL_URL` is the address shown in the QR code; a container cannot see the host's LAN IP, so it must be set. `.env` also sets the published port, the timezone (`TZ`, default `Asia/Manila`, from the "TZ identifier" column of the [tz database list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)), and the host folders for songs and app data. To update, `git pull` and run `docker compose up -d --build` again.
 
-For more information and a configurable docker-compose example, [see official Dockerhub repo](https://hub.docker.com/r/vicwomg/pikaraoke)
-
-To run under a path prefix (e.g., `/karaoke`), add `--base-path /your-path` and set `-u` to the public origin. Example: `--base-path /karaoke -u https://example.com`. PiKaraoke will generate links under `/karaoke` automatically. For reverse proxy setups, the proxy must forward both HTTP and WebSocket traffic for that path to PiKaraoke. Path-based nginx-proxy setups typically also need `VIRTUAL_PATH=/karaoke` with `VIRTUAL_DEST=/`.
+To pass a path prefix or other options, extend `command` in `docker-compose.yml`. To run under a path prefix (e.g., `/karaoke`), add `--base-path /your-path` and set `-u` to the public origin. Example: `--base-path /karaoke -u https://example.com`. PiKaraoke will generate links under `/karaoke` automatically. For reverse proxy setups, the proxy must forward both HTTP and WebSocket traffic for that path to PiKaraoke. Path-based nginx-proxy setups typically also need `VIRTUAL_PATH=/karaoke` with `VIRTUAL_DEST=/`.
 
 ## Screenshots
 

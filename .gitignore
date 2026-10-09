@@ -10,7 +10,8 @@ songs/
 qrcode.png
 .DS_Store
 *.ini
-docker-compose.yml
+.env
+/data/
 /.idea/
 .coverage
 .claude/

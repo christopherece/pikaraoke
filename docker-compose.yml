@@ -1,0 +1,40 @@
+# Karaoke ni Lakay, built from this repository.
+#
+#   cp .env.example .env    # then set KNL_URL to this machine's LAN address
+#   mkdir -p songs data     # create these first, or Docker makes them root-owned
+#                           # and the app (uid 1000) cannot write to them
+#   docker compose up -d --build
+#
+# Builds locally rather than pulling vicwomg/pikaraoke, which is the upstream
+# app without this fork's branding.
+
+services:
+  karaoke-ni-lakay:
+    build:
+      context: .
+      dockerfile: build_scripts/docker/Dockerfile
+    image: karaoke-ni-lakay:latest
+    container_name: karaoke-ni-lakay
+
+    # -u is the address the QR code and splash screen show to guests. Inside a
+    # container the app cannot see the host's LAN IP, so it must be given.
+    command: ["-u", "${KNL_URL:-http://localhost:5555}"]
+
+    environment:
+      - TZ=${TZ:-Asia/Manila}
+
+    volumes:
+      - ${KNL_SONGS_DIR:-./songs}:/app/pikaraoke-songs
+      # Config, admin password, play history and the song database.
+      - ${KNL_DATA_DIR:-./data}:/home/pikaraoke/.pikaraoke
+
+    ports:
+      - "${KNL_PORT:-5555}:5555"
+
+    restart: unless-stopped
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
