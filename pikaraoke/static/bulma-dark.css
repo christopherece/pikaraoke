@@ -10,29 +10,38 @@
    COLOR VARIABLES
    =================================== */
 :root {
+	/* Karaoke ni Lakay: the Philippine flag on a night sky. Royal blue carries
+	   the chrome, the sun's gold marks what is clickable, and the red is kept
+	   for danger and the navbar's stripe so it still means something. */
+
 	/* Background colors */
-	--dark-bg-primary: #1f2424;
-	--dark-bg-secondary: #282f2f;
-	--dark-bg-tertiary: #343c3d;
+	--dark-bg-primary: #0a1430;
+	--dark-bg-secondary: #111e42;
+	--dark-bg-tertiary: #182853;
 
 	/* Text colors */
 	--dark-text-primary: #ffffff;
 	--dark-text-secondary: #f2f2f2;
-	--dark-text-muted: #8c9b9d;
-	--dark-text-light: #dbdee0;
+	--dark-text-muted: #94a1c2;
+	--dark-text-light: #dce2f0;
 
 	/* Border colors */
-	--dark-border: #5e6d6f;
-	--dark-border-light: #8c9b9d;
+	--dark-border: #34467a;
+	--dark-border-light: #6b7ba8;
 
 	/* Accent colors */
-	--dark-primary: #375a7f;
-	--dark-link: #1abc9c;
-	--dark-link-hover: #1dd2af;
-	--dark-info: #3298dc;
+	--dark-primary: #0038a8;
+	--dark-primary-hover: #1a4fc4;
+	--dark-primary-disabled: #2a4683;
+	--dark-link: #fcd116;
+	--dark-link-hover: #ffe165;
+	/* Text on a gold background: white on gold is unreadable. */
+	--dark-on-link: #0a1430;
+	--dark-flag-red: #ce1126;
+	--dark-info: #3b82f6;
 	--dark-success: #2ecc71;
-	--dark-warning: #f1b70e;
-	--dark-danger: #e74c3c;
+	--dark-warning: #f5a623;
+	--dark-danger: #ce1126;
 }
 
 /* ===================================
@@ -128,21 +137,21 @@ hr {
 }
 
 .button.is-primary:hover {
-	background-color: #436d9a;
+	background-color: var(--dark-primary-hover);
 }
 
 .button.is-primary[disabled] {
-	background-color: #3e5b7a;
+	background-color: var(--dark-primary-disabled);
 }
 
 .button.is-link {
 	background-color: var(--dark-link);
 	border-color: transparent;
-	color: var(--dark-text-primary);
+	color: var(--dark-on-link);
 }
 
 .button.is-link:hover {
-	background-color: #1fdeb8;
+	background-color: var(--dark-link-hover);
 }
 
 .button.is-info {
@@ -284,7 +293,7 @@ hr {
 
 .notification.is-link {
 	background-color: var(--dark-link);
-	color: var(--dark-text-primary);
+	color: var(--dark-on-link);
 }
 
 .notification.is-info {
@@ -345,6 +354,9 @@ hr {
 .navbar {
 	background-color: var(--dark-primary);
 	border-radius: 0.4em;
+	/* The flag's red band, under the blue. Inset so it follows the rounded
+	   corners instead of adding height. */
+	box-shadow: inset 0 -4px 0 var(--dark-flag-red);
 }
 
 .navbar-item,
@@ -463,7 +475,7 @@ hr {
 .tabs.is-toggle li.is-active a {
 	background-color: var(--dark-link);
 	border-color: var(--dark-link);
-	color: var(--dark-text-primary);
+	color: var(--dark-on-link);
 }
 
 /* ===================================
@@ -523,7 +535,7 @@ hr {
 
 .menu-list a.is-active {
 	background-color: var(--dark-link);
-	color: var(--dark-text-primary);
+	color: var(--dark-on-link);
 }
 
 .menu-label {
@@ -594,6 +606,7 @@ hr {
 
 .tag.is-link {
 	background-color: var(--dark-link);
+	color: var(--dark-on-link);
 }
 
 .tag.is-info {
@@ -626,6 +639,7 @@ hr {
 
 .hero.is-link {
 	background-color: var(--dark-link);
+	color: var(--dark-on-link);
 }
 
 .hero.is-info {
@@ -665,7 +679,7 @@ hr {
 .pagination-link.is-current {
 	background-color: var(--dark-link);
 	border-color: var(--dark-link);
-	color: var(--dark-text-primary);
+	color: var(--dark-on-link);
 }
 
 /* ===================================
@@ -697,7 +711,7 @@ button.dropdown-item:hover {
 .dropdown-item.is-active,
 button.dropdown-item.is-active {
 	background-color: var(--dark-link);
-	color: var(--dark-text-primary);
+	color: var(--dark-on-link);
 }
 
 .dropdown-divider {

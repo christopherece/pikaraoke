@@ -33,7 +33,7 @@ def app(admin_auth):
     test_app = Flask(__name__)
     test_app.secret_key = admin_auth.secret_key
     test_app.config["ADMIN_AUTH"] = admin_auth
-    test_app.config["SITE_NAME"] = "PiKaraoke"
+    test_app.config["SITE_NAME"] = "Karaoke ni Lakay"
     Babel(test_app)
     test_app.register_blueprint(sessions_api_bp)
     test_app.register_blueprint(sessions_bp)
@@ -232,7 +232,8 @@ class TestExport:
 
         assert response.status_code == 200
         assert response.mimetype == "text/plain"
-        assert 'filename="pikaraoke-abc.txt"' in response.headers["Content-Disposition"]
+        assert 'filename="karaoke-ni-lakay-abc.txt"' in response.headers["Content-Disposition"]
+        assert body.startswith("Karaoke ni Lakay - Play History\n")
         # A numbered, human-readable set list: minutes only, no CSV commas.
         assert "1. 2026-03-05 21:00  Alice - Artist - Song" in body
         assert "2. 2026-03-05 21:05  Bob - Another Song" in body

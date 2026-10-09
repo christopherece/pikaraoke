@@ -1,8 +1,10 @@
-# PiKaraoke
+# Karaoke ni Lakay
 
-<img width="588" height="339" alt="Image" src="https://i.ibb.co/Z6MTM4wt/pikaraoke-readme.png" />
+<img width="588" alt="Karaoke ni Lakay" src="../pikaraoke/static/images/logo.png" />
 
-PiKaraoke is a cross-platform karaoke server that brings the professional "KTV" experience to your home. It transforms your computer or Raspberry Pi into a dedicated karaoke station with a full-screen player and an instant web interface. Guests can join by simply scanning a QR code—no app downloads required—to browse your local library, manage the queue, and access countless karaoke hits from YouTube.
+Karaoke ni Lakay is a cross-platform karaoke server, dressed in the colors of the Philippine flag, that brings the "KTV" experience to your home. It transforms your computer or Raspberry Pi into a dedicated karaoke station with a full-screen player and an instant web interface. Guests can join by simply scanning a QR code—no app downloads required—to browse your local library, manage the queue, and access countless karaoke hits from YouTube.
+
+Karaoke ni Lakay is a fork of [PiKaraoke](https://github.com/vicwomg/pikaraoke) by Vic Wong. The program is still installed and run as `pikaraoke`, as shown below.
 
 - 📱 Instant Mobile Remote: Search and queue songs from any smartphone—just scan and sing.
 - 📺 Dedicated Player: High-performance splash screen that can be opened on any web browser for a true karaoke room feel.
@@ -13,7 +15,7 @@ PiKaraoke is a cross-platform karaoke server that brings the professional "KTV" 
 - 🎯 Hyper-accurate vocal performance scoring system: (not really, it's random. But kind of fun!)
 - 🐧 Lightweight & Versatile: Runs anywhere from a basic Raspberry Pi to a high-end PC.
 
-Love PiKaraoke? This project is independently maintained and free for everyone to enjoy. If PiKaraoke has made your parties better and you'd like to help keep the project alive and growing, feel free to [buy me a coffee](https://www.buymeacoffee.com/vicwomg)! <br/><br/>
+Love the upstream PiKaraoke project? It is independently maintained and free for everyone to enjoy. To support its author, you can [buy them a coffee](https://www.buymeacoffee.com/vicwomg)! <br/><br/>
 <a href="https://www.buymeacoffee.com/vicwomg" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg)](https://conventionalcommits.org)

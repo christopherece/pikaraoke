@@ -9,7 +9,7 @@ from flask_smorest import Blueprint
 from marshmallow import Schema, ValidationError, fields, validate, validates_schema
 
 from pikaraoke.lib.auth import public
-from pikaraoke.lib.current_app import get_karaoke_instance
+from pikaraoke.lib.current_app import get_karaoke_instance, get_site_name
 from pikaraoke.lib.play_history_manager import RESET_SCOPES, SESSION_NAME_MAX_LENGTH
 
 _ = flask_babel.gettext
@@ -290,20 +290,24 @@ def _export_csv(session_uuid: str, plays: list[dict]) -> Response:
     return Response(
         buffer.getvalue(),
         mimetype="text/csv",
-        headers={"Content-Disposition": f'attachment; filename="pikaraoke-{session_uuid}.csv"'},
+        headers={
+            "Content-Disposition": f'attachment; filename="karaoke-ni-lakay-{session_uuid}.csv"'
+        },
     )
 
 
 def _export_txt(session_uuid: str, plays: list[dict]) -> Response:
     """Render plays as a numbered, human-readable list (the #213 request)."""
-    lines = [_("PiKaraoke - Play History"), ""]
+    lines = [_("%(site_title)s - Play History", site_title=get_site_name()), ""]
     for i, play in enumerate(plays, 1):
         # played_at is "YYYY-MM-DD HH:MM:SS"; minutes are enough for a set list.
         lines.append(f"{i}. {play['played_at'][:16]}  {play['performer']} - {play['song']}")
     return Response(
         "\n".join(lines) + "\n",
         mimetype="text/plain",
-        headers={"Content-Disposition": f'attachment; filename="pikaraoke-{session_uuid}.txt"'},
+        headers={
+            "Content-Disposition": f'attachment; filename="karaoke-ni-lakay-{session_uuid}.txt"'
+        },
     )
 
 

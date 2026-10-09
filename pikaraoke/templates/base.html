@@ -405,7 +405,7 @@
     .session-ribbon-dot { animation: none; }
   }
   tr:nth-child(even) {
-    background-color: rgb(50, 55, 55);
+    background-color: var(--dark-bg-secondary);
   }
   @media screen and (max-width: 1088px) {
     .navbar-brand > .navbar-item > span {
@@ -481,8 +481,8 @@
                four things a singer actually uses. -->
           <div id="pikaraoke-menu" class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              <i class="icon icon-info-circled-1" title="Pikaraoke"></i>
-              <span>Pikaraoke</span>
+              <i class="icon icon-info-circled-1" title="{{ site_title }}"></i>
+              <span>{{ site_title }}</span>
             </a>
             <!-- Split by audience, not by topic. Above the divider is what the
                  room came for: the stats and the log, open to every device.

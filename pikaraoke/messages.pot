@@ -500,7 +500,8 @@ msgid "Song"
 msgstr ""
 
 #: routes/sessions_api.py:324
-msgid "PiKaraoke - Play History"
+#, python-format
+msgid "%(site_title)s - Play History"
 msgstr ""
 
 #: routes/splash.py:24
@@ -1005,7 +1006,8 @@ msgstr ""
 
 #. Tells a locked-out host how to reset a forgotten admin password.
 #: templates/info.html:347
-msgid "Forgotten it? Restart PiKaraoke with --admin-password to set a new one."
+#, python-format
+msgid "Forgotten it? Restart %(site_title)s with --admin-password to set a new one."
 msgstr ""
 
 #. Title of the song library section.
@@ -1177,7 +1179,8 @@ msgid "On Linux / Raspberry Pi, install it with:"
 msgstr ""
 
 #: templates/info.html:580
-msgid "and restart PiKaraoke."
+#, python-format
+msgid "and restart %(site_title)s."
 msgstr ""
 
 #. Title text for the Score Phrases section of preferences
@@ -1324,7 +1327,8 @@ msgstr ""
 
 #. Checkbox label which stops the server machine from sleeping
 #: templates/info.html:737
-msgid "Keep the server awake while PiKaraoke is running"
+#, python-format
+msgid "Keep the server awake while %(site_title)s is running"
 msgstr ""
 
 #. Text for the link where the user can clear all user preferences
@@ -1364,7 +1368,8 @@ msgstr ""
 
 #. The version of Pikaraoke running right now.
 #: templates/info.html:771
-msgid "Pikaraoke version:"
+#, python-format
+msgid "%(site_title)s version:"
 msgstr ""
 
 #. Header of the information section about the System stats.
@@ -1494,7 +1499,8 @@ msgstr ""
 #. Text for button which turns off Pikaraoke for everyone using it at your
 #. house.
 #: templates/info.html:907
-msgid "Quit Pikaraoke"
+#, python-format
+msgid "Quit %(site_title)s"
 msgstr ""
 
 #. Text for button which reboots the machine running Pikaraoke.
@@ -1951,9 +1957,10 @@ msgstr ""
 
 #. Prompt for interaction in order to enable video autoplay.
 #: templates/splash.html:137
+#, python-format
 msgid ""
 "Due to limitations with browser permissions, you must interact\n"
-"      with the page once before it allows autoplay of videos. Pikaraoke "
+"      with the page once before it allows autoplay of videos. %(site_title)s "
 "will not\n"
 "      play otherwise. Click the button below to\n"
 "      <a onClick=\"handleConfirmation()\">confirm</a>."

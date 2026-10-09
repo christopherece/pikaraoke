@@ -15,7 +15,11 @@ from marshmallow import Schema, fields
 
 from pikaraoke.karaoke import Karaoke
 from pikaraoke.lib.auth import grant_admin_session, log_in, public
-from pikaraoke.lib.current_app import get_admin_auth, get_karaoke_instance
+from pikaraoke.lib.current_app import (
+    get_admin_auth,
+    get_karaoke_instance,
+    get_site_name,
+)
 from pikaraoke.lib.youtube_dl import get_youtubedl_version, upgrade_youtubedl
 
 _ = flask_babel.gettext
@@ -135,7 +139,10 @@ def shutdown():
         _("Shutting down system now!"),
         [_SHUTDOWN],
         # MSG: Message shown when the system refuses to let pikaraoke shut it down.
-        _("Shutdown failed: pikaraoke does not have permission to power off this system."),
+        _(
+            "Shutdown failed: %(site_title)s does not have permission to power off this system.",
+            site_title=get_site_name(),
+        ),
     )
 
 
@@ -147,7 +154,10 @@ def reboot():
         _("Rebooting system now!"),
         [_REBOOT],
         # MSG: Message shown when the system refuses to let pikaraoke reboot it.
-        _("Reboot failed: pikaraoke does not have permission to restart this system."),
+        _(
+            "Reboot failed: %(site_title)s does not have permission to restart this system.",
+            site_title=get_site_name(),
+        ),
     )
 
 
@@ -159,7 +169,10 @@ def expand_fs():
         # MSG: Message shown after expanding the filesystem.
         flash(_("Expanding filesystem and rebooting system now!"), "is-danger")
         # MSG: Message shown when the system refuses to let pikaraoke expand the filesystem.
-        refused = _("Expand failed: pikaraoke does not have permission to resize the filesystem.")
+        refused = _(
+            "Expand failed: %(site_title)s does not have permission to resize the filesystem.",
+            site_title=get_site_name(),
+        )
         threading.Thread(target=delayed_halt, args=[k, [_EXPAND, _REBOOT], refused]).start()
     else:
         # MSG: Message shown after trying to expand the filesystem on a non-raspberry pi device.

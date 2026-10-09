@@ -596,8 +596,9 @@ msgstr "歌"
 
 # auto-translated
 #: routes/sessions_api.py:324
-msgid "PiKaraoke - Play History"
-msgstr "PiKaraoke - プレイ履歴"
+#, python-format
+msgid "%(site_title)s - Play History"
+msgstr "%(site_title)s - プレイ履歴"
 
 # auto-translated
 #: routes/splash.py:24
@@ -1203,9 +1204,10 @@ msgstr "ログイン"
 # auto-translated
 #. Tells a locked-out host how to reset a forgotten admin password.
 #: templates/info.html:347
+#, python-format
 msgid ""
-"Forgotten it? Restart PiKaraoke with --admin-password to set a new one."
-msgstr "忘れてしまいましたか？ --admin-password を使用して PiKaraoke を再起動し、新しいパスワードを設定します。"
+"Forgotten it? Restart %(site_title)s with --admin-password to set a new one."
+msgstr "忘れてしまいましたか？ --admin-password を使用して %(site_title)s を再起動し、新しいパスワードを設定します。"
 
 # auto-translated
 #. Title of the song library section.
@@ -1413,8 +1415,9 @@ msgstr "Linux / Raspberry Pi では、次のようにインストールします
 
 # auto-translated
 #: templates/info.html:580
-msgid "and restart PiKaraoke."
-msgstr "そしてPiKaraokeを再起動してください。"
+#, python-format
+msgid "and restart %(site_title)s."
+msgstr "そして%(site_title)sを再起動してください。"
 
 # auto-translated
 #. Title text for the Score Phrases section of preferences
@@ -1585,8 +1588,9 @@ msgstr "サーバーを起動したままにします: このプラットフォ�
 # auto-translated
 #. Checkbox label which stops the server machine from sleeping
 #: templates/info.html:737
-msgid "Keep the server awake while PiKaraoke is running"
-msgstr "PiKaraoke の実行中はサーバーを起動したままにします"
+#, python-format
+msgid "Keep the server awake while %(site_title)s is running"
+msgstr "%(site_title)s の実行中はサーバーを起動したままにします"
 
 # auto-translated
 #. Text for the link where the user can clear all user preferences
@@ -1633,8 +1637,9 @@ msgstr "FFmpegのバージョン:"
 # auto-translated
 #. The version of Pikaraoke running right now.
 #: templates/info.html:771
-msgid "Pikaraoke version:"
-msgstr "ピカオケバージョン："
+#, python-format
+msgid "%(site_title)s version:"
+msgstr "%(site_title)sバージョン："
 
 # auto-translated
 #. Header of the information section about the System stats.
@@ -1787,8 +1792,9 @@ msgstr "ただプラグを抜くのはやめてください！データの破損
 #. Text for button which turns off Pikaraoke for everyone using it at your
 #. house.
 #: templates/info.html:907
-msgid "Quit Pikaraoke"
-msgstr "ピカカラオケをやめる"
+#, python-format
+msgid "Quit %(site_title)s"
+msgstr "%(site_title)sをやめる"
 
 # auto-translated
 #. Text for button which reboots the machine running Pikaraoke.
@@ -2346,14 +2352,15 @@ msgstr "あなたのスコア"
 # auto-translated
 #. Prompt for interaction in order to enable video autoplay.
 #: templates/splash.html:137
+#, python-format
 msgid ""
 "Due to limitations with browser permissions, you must interact\n"
-"      with the page once before it allows autoplay of videos. Pikaraoke will not\n"
+"      with the page once before it allows autoplay of videos. %(site_title)s will not\n"
 "      play otherwise. Click the button below to\n"
 "      <a onClick=\"handleConfirmation()\">confirm</a>."
 msgstr ""
 "ブラウザの権限に制限があるため、対話する必要があります\n"
-"      ビデオの自動再生を許可する前に、ページを一度使用してください。ピカカラオケはしません\n"
+"      ビデオの自動再生を許可する前に、ページを一度使用してください。%(site_title)sはしません\n"
 "      それ以外の場合はプレイしてください。下のボタンをクリックしてください\n"
 "      <a onClick=\"handleConfirmation()\">確認</a>します。"
 

@@ -553,8 +553,9 @@ msgstr "Canção"
 
 # auto-translated
 #: routes/sessions_api.py:324
-msgid "PiKaraoke - Play History"
-msgstr "PiKaraokê - Histórico de jogos"
+#, python-format
+msgid "%(site_title)s - Play History"
+msgstr "%(site_title)s - Histórico de jogos"
 
 #: routes/splash.py:24
 msgid "Never sing again... ever."
@@ -1129,10 +1130,11 @@ msgstr "Login"
 # auto-translated
 #. Tells a locked-out host how to reset a forgotten admin password.
 #: templates/info.html:347
+#, python-format
 msgid ""
-"Forgotten it? Restart PiKaraoke with --admin-password to set a new one."
+"Forgotten it? Restart %(site_title)s with --admin-password to set a new one."
 msgstr ""
-"Esqueceu? Reinicie o PiKaraoke com --admin-password para definir uma nova."
+"Esqueceu? Reinicie o %(site_title)s com --admin-password para definir uma nova."
 
 # auto-translated
 #. Title of the song library section.
@@ -1339,8 +1341,9 @@ msgstr "No Linux/Raspberry Pi, instale-o com:"
 
 # auto-translated
 #: templates/info.html:580
-msgid "and restart PiKaraoke."
-msgstr "e reinicie o PiKaraoke."
+#, python-format
+msgid "and restart %(site_title)s."
+msgstr "e reinicie o %(site_title)s."
 
 #. Title text for the Score Phrases section of preferences
 #: templates/info.html:592
@@ -1511,8 +1514,9 @@ msgstr "Mantenha o servidor ativo: não é compatível com esta plataforma."
 # auto-translated
 #. Checkbox label which stops the server machine from sleeping
 #: templates/info.html:737
-msgid "Keep the server awake while PiKaraoke is running"
-msgstr "Mantenha o servidor ativo enquanto o PiKaraoke estiver em execução"
+#, python-format
+msgid "Keep the server awake while %(site_title)s is running"
+msgstr "Mantenha o servidor ativo enquanto o %(site_title)s estiver em execução"
 
 #. Text for the link where the user can clear all user preferences
 #: templates/info.html:744
@@ -1551,8 +1555,9 @@ msgstr "Versão do FFmpeg"
 
 #. The version of Pikaraoke running right now.
 #: templates/info.html:771
-msgid "Pikaraoke version:"
-msgstr "Versão do Pikaraoke:"
+#, python-format
+msgid "%(site_title)s version:"
+msgstr "Versão do %(site_title)s:"
 
 #. Header of the information section about the System stats.
 #: templates/info.html:777
@@ -1700,8 +1705,9 @@ msgstr ""
 #. Text for button which turns off Pikaraoke for everyone using it at your
 #. house.
 #: templates/info.html:907
-msgid "Quit Pikaraoke"
-msgstr "Sair do Pikaraoke"
+#, python-format
+msgid "Quit %(site_title)s"
+msgstr "Sair do %(site_title)s"
 
 #. Text for button which reboots the machine running Pikaraoke.
 #: templates/info.html:911
@@ -2248,15 +2254,16 @@ msgstr "Sua nota"
 
 #. Prompt for interaction in order to enable video autoplay.
 #: templates/splash.html:137
+#, python-format
 msgid ""
 "Due to limitations with browser permissions, you must interact\n"
-"      with the page once before it allows autoplay of videos. Pikaraoke will not\n"
+"      with the page once before it allows autoplay of videos. %(site_title)s will not\n"
 "      play otherwise. Click the button below to\n"
 "      <a onClick=\"handleConfirmation()\">confirm</a>."
 msgstr ""
 "Devido a limitações nas permissões do navegador, você deve interagir com a "
 "página uma vez antes que ela permita a reprodução automática de vídeos. "
-"Pikaraokê não jogue de outra forma. Clique no botão abaixo para       <a "
+"%(site_title)s não jogue de outra forma. Clique no botão abaixo para       <a "
 "onClick=\"handleConfirmation()\">confirmar</a> ."
 
 #. Button to confirm to enable video autoplay.

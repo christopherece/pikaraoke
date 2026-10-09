@@ -377,7 +377,7 @@
 						</div>
 					</form>
 					{# MSG: Tells a locked-out host how to reset a forgotten admin password. #}
-					<p class="is-size-7 has-text-grey">{% trans %}Forgotten it? Restart PiKaraoke with --admin-password to set a new one.{% endtrans %}</p>
+					<p class="is-size-7 has-text-grey">{% trans %}Forgotten it? Restart {{ site_title }} with --admin-password to set a new one.{% endtrans %}</p>
 				</div>
 			</div>
 		</div>
@@ -622,7 +622,7 @@
 					<p class="is-size-7 has-text-grey">
 						{% trans %}On Linux / Raspberry Pi, install it with:{% endtrans %}
 						<code>sudo apt install pulseaudio-utils</code>
-						{% trans %}and restart PiKaraoke.{% endtrans %}
+						{% trans %}and restart {{ site_title }}.{% endtrans %}
 					</p>
 					{% endif %}
 				</div>
@@ -780,7 +780,7 @@
 					{% else %}
 					<div class="user-preference-container">
 						<input id="pref-keep-awake" type="checkbox" class="user-preference-checkbox checkbox" data-pref="keep_awake" {% if keep_awake == True %}checked{% endif %}>
-						<label class="label" for="pref-keep-awake">{# MSG: Checkbox label which stops the server machine from sleeping #} {% trans %}Keep the server awake while PiKaraoke is running{% endtrans %}
+						<label class="label" for="pref-keep-awake">{# MSG: Checkbox label which stops the server machine from sleeping #} {% trans %}Keep the server awake while {{ site_title }} is running{% endtrans %}
 						</label>
 					</div>
 					{% endif %}
@@ -818,7 +818,7 @@
 					{# MSG: The version of the program "ffmpeg". #}
 					<li><u>{% trans %}FFmpeg version:{% endtrans %}</u> {{ ffmpeg_version }} {% if not is_transpose_enabled %} (missing lib-rubberband, pitch shift is not supported) {% endif %}</li>
 					{# MSG: The version of Pikaraoke running right now. #}
-					<li><u>{% trans %}Pikaraoke version:{% endtrans %}</u> {{ pikaraoke_version }}</li>
+					<li><u>{% trans %}{{ site_title }} version:{% endtrans %}</u> {{ pikaraoke_version }}</li>
 					</ul>
 				</div>
 			</div>
@@ -954,7 +954,7 @@
 
 					<div class="buttons">
 						{# MSG: Text for button which turns off Pikaraoke for everyone using it at your house. #}
-						<a id="quit-link" class="button is-primary" href="{{ url_for('admin.quit') }}">{% trans %}Quit Pikaraoke{% endtrans %}</a>
+						<a id="quit-link" class="button is-primary" href="{{ url_for('admin.quit') }}">{% trans %}Quit {{ site_title }}{% endtrans %}</a>
 						{# Host power control is meaningless in a container: only "Quit" applies. #}
 						{% if (is_pi or is_linux) and not is_container %}
 							{# MSG: Text for button which reboots the machine running Pikaraoke. #}

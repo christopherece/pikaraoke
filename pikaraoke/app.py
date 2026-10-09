@@ -92,7 +92,7 @@ app.jinja_env.globals.update(
 # Only expose the Swagger UI when --enable-swagger is passed.
 from flask_smorest import Api
 
-app.config["API_TITLE"] = "PiKaraoke API"
+app.config["API_TITLE"] = "Karaoke ni Lakay API"
 app.config["API_VERSION"] = VERSION
 app.config["OPENAPI_VERSION"] = "3.0.2"
 app.config["OPENAPI_URL_PREFIX"] = "/"
@@ -308,7 +308,7 @@ def main() -> None:
         )
 
     # expose shared configuration variables to the flask app
-    app.config["SITE_NAME"] = "PiKaraoke"
+    app.config["SITE_NAME"] = "Karaoke ni Lakay"
 
     # Expose some functions to jinja templates. The session globals are bound at
     # import instead; these two need the Karaoke instance, which only exists here.

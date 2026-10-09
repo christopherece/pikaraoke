@@ -596,8 +596,9 @@ msgstr "노래"
 
 # auto-translated
 #: routes/sessions_api.py:324
-msgid "PiKaraoke - Play History"
-msgstr "PiKaraoke - 플레이 기록"
+#, python-format
+msgid "%(site_title)s - Play History"
+msgstr "%(site_title)s - 플레이 기록"
 
 # auto-translated
 #: routes/splash.py:24
@@ -1203,9 +1204,10 @@ msgstr "로그인"
 # auto-translated
 #. Tells a locked-out host how to reset a forgotten admin password.
 #: templates/info.html:347
+#, python-format
 msgid ""
-"Forgotten it? Restart PiKaraoke with --admin-password to set a new one."
-msgstr "잊어버리셨나요? --admin-password를 사용하여 PiKaraoke를 다시 시작하여 새로운 비밀번호를 설정하세요."
+"Forgotten it? Restart %(site_title)s with --admin-password to set a new one."
+msgstr "잊어버리셨나요? --admin-password를 사용하여 %(site_title)s를 다시 시작하여 새로운 비밀번호를 설정하세요."
 
 # auto-translated
 #. Title of the song library section.
@@ -1413,8 +1415,9 @@ msgstr "Linux/Raspberry Pi에서는 다음을 사용하여 설치합니다."
 
 # auto-translated
 #: templates/info.html:580
-msgid "and restart PiKaraoke."
-msgstr "PiKaraoke를 다시 시작하세요."
+#, python-format
+msgid "and restart %(site_title)s."
+msgstr "%(site_title)s를 다시 시작하세요."
 
 # auto-translated
 #. Title text for the Score Phrases section of preferences
@@ -1585,8 +1588,9 @@ msgstr "서버를 깨우세요: 이 플랫폼에서는 지원되지 않습니다
 # auto-translated
 #. Checkbox label which stops the server machine from sleeping
 #: templates/info.html:737
-msgid "Keep the server awake while PiKaraoke is running"
-msgstr "PiKaraoke가 실행되는 동안 서버를 깨워두세요"
+#, python-format
+msgid "Keep the server awake while %(site_title)s is running"
+msgstr "%(site_title)s가 실행되는 동안 서버를 깨워두세요"
 
 # auto-translated
 #. Text for the link where the user can clear all user preferences
@@ -1633,8 +1637,9 @@ msgstr "FFmpeg 버전:"
 # auto-translated
 #. The version of Pikaraoke running right now.
 #: templates/info.html:771
-msgid "Pikaraoke version:"
-msgstr "피카라오케 버전:"
+#, python-format
+msgid "%(site_title)s version:"
+msgstr "%(site_title)s 버전:"
 
 # auto-translated
 #. Header of the information section about the System stats.
@@ -1787,8 +1792,9 @@ msgstr "플러그만 뽑지 마세요! 데이터 손상을 방지하려면 항�
 #. Text for button which turns off Pikaraoke for everyone using it at your
 #. house.
 #: templates/info.html:907
-msgid "Quit Pikaraoke"
-msgstr "피카라오케 종료"
+#, python-format
+msgid "Quit %(site_title)s"
+msgstr "%(site_title)s 종료"
 
 # auto-translated
 #. Text for button which reboots the machine running Pikaraoke.
@@ -2346,14 +2352,15 @@ msgstr "당신의 점수"
 # auto-translated
 #. Prompt for interaction in order to enable video autoplay.
 #: templates/splash.html:137
+#, python-format
 msgid ""
 "Due to limitations with browser permissions, you must interact\n"
-"      with the page once before it allows autoplay of videos. Pikaraoke will not\n"
+"      with the page once before it allows autoplay of videos. %(site_title)s will not\n"
 "      play otherwise. Click the button below to\n"
 "      <a onClick=\"handleConfirmation()\">confirm</a>."
 msgstr ""
 "브라우저 권한 제한으로 인해 상호 작용해야 합니다.\n"
-"      동영상 자동 재생을 허용하기 전에 페이지를 한 번만 사용하세요. 피카라오케는 안 돼요\n"
+"      동영상 자동 재생을 허용하기 전에 페이지를 한 번만 사용하세요. %(site_title)s는 안 돼요\n"
 "      그렇지 않으면 플레이하십시오. 아래 버튼을 클릭하시면\n"
 "      <a onClick=\"handleConfirmation()\">확인</a>."
 

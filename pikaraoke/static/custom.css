@@ -29,7 +29,7 @@
 }
 
 .control-box a:hover {
-  color: #74ccb3;
+  color: var(--dark-link);
 }
 
 .pagination {
