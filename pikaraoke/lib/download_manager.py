@@ -234,7 +234,7 @@ class DownloadManager:
         self,
         video_url: str,
         enqueue: bool = False,
-        user: str = "Pikaraoke",
+        user: str = "Karaoke ni Lakay",
         title: str | None = None,
     ) -> None:
         """Queue a video for download.

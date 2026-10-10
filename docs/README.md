@@ -15,9 +15,6 @@ Karaoke ni Lakay is a fork of [PiKaraoke](https://github.com/vicwomg/pikaraoke) 
 - 🎯 Hyper-accurate vocal performance scoring system: (not really, it's random. But kind of fun!)
 - 🐧 Lightweight & Versatile: Runs anywhere from a basic Raspberry Pi to a high-end PC.
 
-Love the upstream PiKaraoke project? It is independently maintained and free for everyone to enjoy. To support its author, you can [buy them a coffee](https://www.buymeacoffee.com/vicwomg)! <br/><br/>
-<a href="https://www.buymeacoffee.com/vicwomg" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
-
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-green.svg)](https://conventionalcommits.org)
 
 ## Table of Contents
@@ -27,9 +24,9 @@ Love the upstream PiKaraoke project? It is independently maintained and free for
 - [Manual Installation](#manual-installation-advanced-users)
 - [Usage](#usage)
 - [Docker](#docker-instructions)
+- [Hosting venues](#hosting-venues-karaoke-ni-lakay-cloud)
 - [Screenshots](#screenshots)
-- [Developing pikaraoke](#developing-pikaraoke)
-- [Troubleshooting](#troubleshooting-and-guides)
+- [Developing](#developing)
 
 ## Supported Devices / OS / Platforms
 
@@ -40,17 +37,17 @@ Love the upstream PiKaraoke project? It is independently maintained and free for
 
 ## Quick Install
 
-For a streamlined installation that handles all dependencies (uv, ffmpeg, deno) and installs PiKaraoke, run the following in your terminal:
+For a streamlined installation that handles all dependencies (uv, ffmpeg, deno) and installs Karaoke ni Lakay, run the following in your terminal:
 
 ### Linux & macOS
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/vicwomg/pikaraoke/master/build_scripts/install/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/christopherece/pikaraoke/master/build_scripts/install/install.sh | bash
 ```
 
 ### Windows (installer)
 
-Download `PiKaraoke-<version>-setup.exe` from the [latest release](https://github.com/vicwomg/pikaraoke/releases) and run it. It adds Start Menu and desktop shortcuts.
+Download `Karaoke-ni-Lakay-<version>-setup.exe` from the [latest release](https://github.com/christopherece/pikaraoke/releases) and run it. It adds Start Menu and desktop shortcuts.
 
 Windows shows a blue "Windows protected your PC" screen because the installer is unsigned. Click **More info**, then **Run anyway**.
 
@@ -59,14 +56,14 @@ To uninstall, use **Settings > Apps**.
 ### Windows (PowerShell)
 
 ```powershell
-irm https://raw.githubusercontent.com/vicwomg/pikaraoke/master/build_scripts/install/install.ps1 | iex
+irm https://raw.githubusercontent.com/christopherece/pikaraoke/master/build_scripts/install/install.ps1 | iex
 ```
 
 To uninstall, swap `install.ps1` for `uninstall.ps1`.
 
-After installation, you can launch pikaraoke from the command line with `pikaraoke` or from a desktop shortcut. Re-running the above command will update a previous pikaraoke installation to the latest version.
+After installation, you can launch Karaoke ni Lakay from the command line with `pikaraoke` or from a desktop shortcut. Re-running the above command updates it to the latest version.
 
-Uninstalling removes the pikaraoke package and its shortcuts. Your songs, settings, ffmpeg, deno and uv are left in place.
+Uninstalling removes the app and its shortcuts. Your songs, settings, ffmpeg, deno and uv are left in place.
 
 ## Manual installation (advanced users)
 
@@ -77,19 +74,17 @@ Uninstalling removes the pikaraoke package and its shortcuts. Your songs, settin
 - FFmpeg (preferably a build with lib-rubberband for transposing): [FFmpeg downloads](https://ffmpeg.org/download.html)
 - A js runtime installed to your PATH. [Node.js](https://nodejs.org/en/download/) is most common, [Deno](https://deno.com/) is probably easiest for non-developers.
 
-### Install the pikaraoke package
+### Install the app
 
-We recommend installing pikaraoke via [uv](https://github.com/astral-sh/uv).
+We recommend installing it with [uv](https://github.com/astral-sh/uv), straight from this repository. (The `pikaraoke` package on PyPI is the upstream project, without Karaoke ni Lakay's changes.)
 
 ```sh
-uv tool install pikaraoke
+uv tool install git+https://github.com/christopherece/pikaraoke
 ```
-
-You may alternately use the standard python `pip install pikaraoke` installer if you are familiar with virtual environments or you are not concerned with global package isolation.
 
 ## Usage
 
-Run pikaraoke from the command line with:
+Run it from the command line with:
 
 ```sh
 pikaraoke
@@ -99,15 +94,15 @@ Launches the player in "headed" mode via your default browser. Scan the QR code 
 
 See the help command `pikaraoke --help` for available options.
 
-To upgrade to the latest version of pikaraoke, run:
+To upgrade to the latest version, run:
 
 ```sh
-uv tool upgrade pikaraoke
+uv tool install --force git+https://github.com/christopherece/pikaraoke
 ```
 
 ## Docker instructions
 
-Karaoke ni Lakay ships a `docker-compose.yml` that builds the image from this repository (the `vicwomg/pikaraoke` image on Docker Hub is upstream PiKaraoke, without this fork's branding):
+Karaoke ni Lakay ships a `docker-compose.yml` that builds the image from this repository (the upstream image on Docker Hub does not include Karaoke ni Lakay's changes):
 
 ```sh
 git clone https://github.com/christopherece/pikaraoke.git karaoke-ni-lakay
@@ -119,38 +114,69 @@ docker compose up -d --build
 
 `KNL_URL` is the address shown in the QR code; a container cannot see the host's LAN IP, so it must be set. `.env` also sets the published port, the timezone (`TZ`, default `Asia/Manila`, from the "TZ identifier" column of the [tz database list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)), and the host folders for songs and app data. To update, `git pull` and run `docker compose up -d --build` again.
 
-To pass a path prefix or other options, extend `command` in `docker-compose.yml`. To run under a path prefix (e.g., `/karaoke`), add `--base-path /your-path` and set `-u` to the public origin. Example: `--base-path /karaoke -u https://example.com`. PiKaraoke will generate links under `/karaoke` automatically. For reverse proxy setups, the proxy must forward both HTTP and WebSocket traffic for that path to PiKaraoke. Path-based nginx-proxy setups typically also need `VIRTUAL_PATH=/karaoke` with `VIRTUAL_DEST=/`.
+To pass a path prefix or other options, extend `command` in `docker-compose.yml`. To run under a path prefix (e.g., `/karaoke`), add `--base-path /your-path` and set `-u` to the public origin. Example: `--base-path /karaoke -u https://example.com`. Karaoke ni Lakay will generate links under `/karaoke` automatically. For reverse proxy setups, the proxy must forward both HTTP and WebSocket traffic for that path to Karaoke ni Lakay. Path-based nginx-proxy setups typically also need `VIRTUAL_PATH=/karaoke` with `VIRTUAL_DEST=/`.
+
+## Hosting venues (Karaoke ni Lakay Cloud)
+
+[`cloud/`](../cloud) runs Karaoke ni Lakay as a subscription service: one server hosts many venues, each at its own web address with its own songs, queue and admin password, and an owner page manages them.
+
+- **Owner page** at `owner.<your domain>`: add a venue (name, web address, plan, free-trial length, admin password), see each venue's plan, trial end, paid-until date, song storage, last song played and whether its container is running, and record payments with **✓ Paid 1 month** / **✓ Paid 1 year**.
+- **Plans** limit song storage: Small (5 GB, about a hundred songs), Medium (15 GB), Large (no limit). Change them in `PLANS` in [`cloud/owner.py`](../cloud/owner.py). A venue that reaches its limit can still sing everything it has, but cannot download more.
+- **Trial and payments:** a venue sees a warning banner in the last 7 days of its trial, and for 7 days after its paid-until date passes. After that it turns **read-only**: everyone can still browse the library and history and the host can still log in, but nothing can be queued or downloaded. The owner can also make a venue read-only, or turn it back on, at any time.
+- Each venue's host sees its plan and storage under **Settings › System Info**.
+
+Each venue runs in its own container (`knl-<venue>`), started by the owner app, and [Traefik](https://traefik.io/) routes `<venue>.<your domain>` to it. Songs are video files, so disk space and the bandwidth of streaming to every venue's TV are what a server runs out of first; the owner page shows free disk space.
+
+### Try it on your computer
+
+```sh
+cd cloud
+cp .env.example .env
+```
+
+In `.env` set `BASE_DOMAIN=localhost`, an `OWNER_PASSWORD`, `HOST_DATA_DIR` to an absolute path (e.g. the full path of `cloud/data`), `PUBLIC_SCHEME=http` and `PUBLIC_PORT=8088`. Then:
+
+```sh
+mkdir -p data
+docker compose up -d --build
+```
+
+Open **http://owner.localhost:8088**, log in and add a venue, e.g. `lakaybar`. It is then at **http://lakaybar.localhost:8088** (Chrome and Edge open `*.localhost` addresses without any setup).
+
+### Running it on a server (DigitalOcean droplet)
+
+1. **DNS:** point `owner.yourdomain.com` and `*.yourdomain.com` (a wildcard A record) at the droplet's IP.
+2. **Start it:** in `cloud/`, `cp .env.example .env`, set `BASE_DOMAIN=yourdomain.com`, `OWNER_PASSWORD`, `OWNER_CONTACT`, `HOST_DATA_DIR` (e.g. `/opt/karaoke-cloud/data`) and `HTTP_BIND=172.17.0.1:8088`, then `mkdir -p` the data directory and `docker compose up -d --build`.
+3. **HTTPS with Nginx Proxy Manager:** add one proxy host for `owner.yourdomain.com` and `*.yourdomain.com` (a wildcard certificate needs Let's Encrypt's DNS challenge), forwarding to `http://172.17.0.1:8088`. Turn on Websockets Support, request an SSL certificate with Force SSL, and add `proxy_read_timeout 120s; proxy_buffering off;` under Advanced so the queue and player stay connected.
+
+To update, `git pull` and run `docker compose up -d --build` again: the owner app moves every venue onto the new image as it starts.
+
+Everything lives in `HOST_DATA_DIR`: `owner.json` (venues, plans, dates), `owner.key` (owner logins) and one folder per venue under `venues/`, holding its songs and data. Back it up.
 
 ## Screenshots
 
 <div style="display: flex; flex-wrap: wrap;">
-<img width="250" alt="pikaraoke-nowplaying" src="images/screenshot-now-playing.png">
-<img width="250" alt="pikaraoke-queue" src="images/screenshot-queue.png">
-<img width="250" alt="pikaraoke-browse" src="images/screenshot-songs-all.png">
-<img width="250" alt="pikaraoke-search" src="images/screenshot-songs-search.png">
-<img width="250" alt="pikaraoke-add-new" src="images/screenshot-add-new.png">
-<img width="250" alt="pikaraoke-play-history" src="images/screenshot-play-history.png">
-<img width="400" height="300" alt="pikaraoke-tv2" src="https://user-images.githubusercontent.com/4107190/95813564-019fa200-0ccd-11eb-95e1-57a002c357a3.png">
+<img width="250" alt="Now playing" src="images/screenshot-now-playing.png">
+<img width="250" alt="Queue" src="images/screenshot-queue.png">
+<img width="250" alt="Songs" src="images/screenshot-songs.png">
+<img width="250" alt="Add new" src="images/screenshot-add-new.png">
+<img width="250" alt="Play history" src="images/screenshot-play-history.png">
+<img width="250" alt="Rankings" src="images/screenshot-rankings.png">
+<img width="500" alt="The player on the TV" src="images/screenshot-tv.png">
 </div>
 
-## Developing pikaraoke
+## Developing
 
-The Pikaraoke project utilizes `uv` for dependency management and local development.
+The project uses `uv` for dependency management and local development.
 
 - Install [uv](https://github.com/astral-sh/uv)
 - Git clone this repo
 
-From the pikaraoke directory:
+From the repository directory:
 
 ```sh
-# install dependencies and run pikaraoke from local code
+# install dependencies and run the app from local code
 uv run pikaraoke
 ```
 
-See the [Pikaraoke development guide](https://github.com/vicwomg/pikaraoke/wiki/Pikaraoke-development-guide) for more details.
-
-## Troubleshooting and guides
-
-See the [Troubleshooting wiki](https://github.com/vicwomg/pikaraoke/wiki/Troubleshooting) for help with issues.
-
-There are also some great guides [on the wiki](https://github.com/vicwomg/pikaraoke/wiki/) to running pikaraoke in all manner of bizarre places including Android, Chromecast, and embedded TVs!
+Run the tests with `uv run pytest`, and the code-quality checks with `uv run pre-commit run --config code_quality/.pre-commit-config.yaml --all-files`.

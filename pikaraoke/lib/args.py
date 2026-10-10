@@ -101,12 +101,6 @@ def parse_pikaraoke_args() -> argparse.Namespace:
         help="Enable Swagger API documentation at /apidocs.",
         required=False,
     )
-    general.add_argument(
-        "--dolphly",
-        action="store_true",
-        help="Enable top-secret DOLPHLY mode.",
-        required=False,
-    )
 
     server = parser.add_argument_group("Server and network")
     server.add_argument(
@@ -126,7 +120,7 @@ def parse_pikaraoke_args() -> argparse.Namespace:
     )
     server.add_argument(
         "--base-path",
-        help="URL path prefix for reverse proxy deployments (e.g., /karaoke). Requires a reverse proxy to handle the path routing; PiKaraoke only generates correct URLs with this prefix.",
+        help="URL path prefix for reverse proxy deployments (e.g., /karaoke). Requires a reverse proxy to handle the path routing; Karaoke ni Lakay only generates correct URLs with this prefix.",
         default="",
         type=normalize_url_base_path,
         required=False,
@@ -163,7 +157,7 @@ def parse_pikaraoke_args() -> argparse.Namespace:
     )
     library.add_argument(
         "--ytdl-args",
-        help='Additional arguments to pass to yt-dlp, as a single string. Attach the value with an equals sign, or its leading dashes are read as PiKaraoke arguments (Example: --ytdl-args="--sleep-requests 1.5")',
+        help='Additional arguments to pass to yt-dlp, as a single string. Attach the value with an equals sign, or its leading dashes are read as Karaoke ni Lakay arguments (Example: --ytdl-args="--sleep-requests 1.5")',
         required=False,
     )
     library.add_argument(
@@ -191,7 +185,7 @@ def parse_pikaraoke_args() -> argparse.Namespace:
         "--hide-splash-screen",
         "--headless",
         action="store_true",
-        help="Headless mode. Don't launch the splash screen/player on the pikaraoke server",
+        help="Headless mode. Don't launch the splash screen/player on the Karaoke ni Lakay server",
         required=False,
     )
     splash.add_argument(
@@ -240,7 +234,7 @@ def parse_pikaraoke_args() -> argparse.Namespace:
     splash.add_argument(
         "--hide-overlay",
         action="store_true",
-        help="Hide all overlays that show on top of video, including current/next song, pikaraoke QR code and IP",
+        help="Hide all overlays that show on top of video, including current/next song, the QR code and IP",
         required=False,
     )
     splash.add_argument(
@@ -287,7 +281,7 @@ def parse_pikaraoke_args() -> argparse.Namespace:
     splash.add_argument(
         "--keep-awake",
         action="store_true",
-        help="Prevent the host machine from sleeping while PiKaraoke is running. Especially useful when headless, where no local player window keeps the system awake.",
+        help="Prevent the host machine from sleeping while Karaoke ni Lakay is running. Especially useful when headless, where no local player window keeps the system awake.",
         required=False,
     )
 
@@ -384,7 +378,7 @@ def parse_pikaraoke_args() -> argparse.Namespace:
     queue = parser.add_argument_group("Queue")
     queue.add_argument(
         "--limit-user-songs-by",
-        help=f"Limit the number of songs a user can add to queue. User name 'Pikaraoke' is always unlimited (default: {_DEFAULTS['limit_user_songs_by']} = unlimited)",
+        help=f"Limit the number of songs a user can add to queue. User name 'Karaoke ni Lakay' is always unlimited (default: {_DEFAULTS['limit_user_songs_by']} = unlimited)",
         default=None,
         required=False,
     )
@@ -408,12 +402,6 @@ def parse_pikaraoke_args() -> argparse.Namespace:
     logo_path = arg_path_parse(args.logo_path)
     bg_music_path = arg_path_parse(args.bg_music_path)
     bg_video_path = arg_path_parse(args.bg_video_path)
-
-    if args.dolphly:
-        logo_path = os.path.join(os.path.dirname(__file__), "..", "static", "images", "dolphly.png")
-        bg_video_path = os.path.join(
-            os.path.dirname(__file__), "..", "static", "video", "the_drive_by_visualdon.mp4"
-        )
 
     if bg_video_path is not None and not os.path.exists(bg_video_path):
         print(f"Background video not found: {bg_video_path}. Using the default.")

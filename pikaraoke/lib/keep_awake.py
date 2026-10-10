@@ -120,7 +120,7 @@ class KeepAwake:
                 # --what=sleep it needs no privileged polkit auth (which would
                 # prompt for a password on headless/SSH sessions).
                 "--what=idle",
-                "--who=PiKaraoke",
+                "--who=Karaoke ni Lakay",
                 "--why=Karaoke session active",
                 "--mode=block",
                 "sleep",

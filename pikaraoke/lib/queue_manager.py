@@ -17,7 +17,7 @@ from pikaraoke.lib.preference_manager import PreferenceManager
 
 # Names the system queues under when no singer asked for the song, so they are
 # exempt from per-singer limits and hold no turn in the fair queue.
-_PLACEHOLDER_SINGERS = frozenset({"pikaraoke", "randomizer"})
+_PLACEHOLDER_SINGERS = frozenset({"karaoke ni lakay", "pikaraoke", "randomizer"})
 
 
 class QueueManager:
@@ -113,7 +113,7 @@ class QueueManager:
     def enqueue(
         self,
         song_path: str,
-        user: str = "Pikaraoke",
+        user: str = "Karaoke ni Lakay",
         semitones: int = 0,
         add_to_front: bool = False,
         log_action: bool = True,

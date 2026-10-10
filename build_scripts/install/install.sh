@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# PiKaraoke One-Line Installer
+# Karaoke ni Lakay One-Line Installer
 # Supports macOS (Homebrew) and Linux (apt-get)
 
 set -e
@@ -20,7 +20,7 @@ done
 
 # Detect OS
 OS_TYPE="$(uname -s)"
-echo "--- PiKaraoke Installer ---"
+echo "--- Karaoke ni Lakay Installer ---"
 echo "Detected OS: $OS_TYPE"
 
 # Determine packages to install
@@ -59,9 +59,9 @@ fi
 
 DISPLAY_LIST=$(IFS=", "; echo "${DISPLAY_PKGS[*]}")
 if [ -z "$DISPLAY_LIST" ]; then
-    INSTALL_LIST="pikaraoke (via uv)"
+    INSTALL_LIST="Karaoke ni Lakay (via uv)"
 else
-    INSTALL_LIST="$DISPLAY_LIST, pikaraoke (via uv)"
+    INSTALL_LIST="$DISPLAY_LIST, Karaoke ni Lakay (via uv)"
 fi
 
 echo "The following packages will be installed/updated: $INSTALL_LIST"
@@ -157,21 +157,22 @@ else
     exit 1
 fi
 
-# Install pikaraoke
-echo "Installing pikaraoke via uv..."
+# Install Karaoke ni Lakay: this fork from GitHub, not upstream pikaraoke from PyPI.
+PACKAGE_SOURCE="git+https://github.com/christopherece/pikaraoke"
+echo "Installing Karaoke ni Lakay via uv..."
 
 if uv tool list | grep -q "pikaraoke"; then
-    echo "PiKaraoke is already installed. Upgrading..."
+    echo "Karaoke ni Lakay is already installed. Upgrading..."
     if [ "$LOCAL" == "y" ]; then
         uv tool install --force .
     else
-        uv tool upgrade pikaraoke
+        uv tool install --force "$PACKAGE_SOURCE"
     fi
 else
     if [ "$LOCAL" == "y" ]; then
         uv tool install .
     else
-        uv tool install pikaraoke
+        uv tool install "$PACKAGE_SOURCE"
     fi
 fi
 
@@ -182,7 +183,7 @@ if [ $INSTALL_SHORTCUTS -eq 1 ]; then
     SHARE_DIR="$HOME/.local/share/pikaraoke"
     mkdir -p "$SHARE_DIR"
     ICON_PATH="$SHARE_DIR/logo.icns"
-    ICON_URL="https://raw.githubusercontent.com/vicwomg/pikaraoke/refs/heads/master/pikaraoke/static/icons/logo.icns"
+    ICON_URL="https://raw.githubusercontent.com/christopherece/pikaraoke/refs/heads/master/pikaraoke/static/icons/logo.icns"
     if [ ! -f "$ICON_PATH" ]; then
         curl -fsSL "$ICON_URL" -o "$ICON_PATH" || echo "Warning: Could not download icon"
     fi
@@ -216,8 +217,8 @@ EOF
             fi
         }
 
-        create_macos_app "PiKaraoke" ""
-        create_macos_app "PiKaraoke (headless)" "--headless"
+        create_macos_app "Karaoke ni Lakay" ""
+        create_macos_app "Karaoke ni Lakay (headless)" "--headless"
         echo "macOS shortcuts created on Desktop."
 
     elif [ "$OS_TYPE" == "Linux" ]; then
@@ -242,8 +243,8 @@ EOF
         }
 
         if [ -d "$HOME/Desktop" ]; then
-            create_linux_desktop "PiKaraoke" "" "PiKaraoke.desktop"
-            create_linux_desktop "PiKaraoke (headless)" "--headless" "PiKaraoke-headless.desktop"
+            create_linux_desktop "Karaoke ni Lakay" "" "Karaoke-ni-Lakay.desktop"
+            create_linux_desktop "Karaoke ni Lakay (headless)" "--headless" "Karaoke-ni-Lakay-headless.desktop"
             echo "Linux shortcuts created on Desktop."
         else
             echo "Warning: Desktop directory not found. Skipping shortcut creation."

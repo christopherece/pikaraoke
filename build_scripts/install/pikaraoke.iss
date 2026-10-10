@@ -1,9 +1,9 @@
 ; Bootstrapper around install.ps1 / uninstall.ps1. Owns only the shortcuts and the
 ; Add/Remove Programs entry. Build with build_installer.ps1.
 
-#define AppName "PiKaraoke"
-#define AppPublisher "vicwomg"
-#define AppURL "https://github.com/vicwomg/pikaraoke"
+#define AppName "Karaoke ni Lakay"
+#define AppPublisher "christopherece"
+#define AppURL "https://github.com/christopherece/pikaraoke"
 
 #ifndef AppVersion
   #define AppVersion "0.0.0"
@@ -32,7 +32,7 @@ MinVersion=10.0.17763
 ArchitecturesAllowed=x64compatible
 
 OutputDir=..\..\dist
-OutputBaseFilename={#AppName}-{#AppVersion}-setup
+OutputBaseFilename=Karaoke-ni-Lakay-{#AppVersion}-setup
 SetupIconFile=..\..\pikaraoke\static\icons\logo.ico
 Compression=lzma2/max
 WizardStyle=modern
@@ -98,7 +98,7 @@ begin
             ' -NoConfirm -NoShortcuts -ExePathOutFile "' + ExeOutFile + '"';
 
   WizardForm.StatusLabel.Caption :=
-    'Installing ffmpeg, deno and PiKaraoke. This can take several minutes...';
+    'Installing ffmpeg, deno and Karaoke ni Lakay. This can take several minutes...';
 
   { winget writes progress with carriage returns, so capture stalls on big downloads. }
   WizardForm.ProgressGauge.Style := npbstMarquee;
@@ -111,7 +111,7 @@ begin
   end;
 
   if ResultCode <> 0 then
-    RaiseException('The PiKaraoke install script failed with exit code ' +
+    RaiseException('The Karaoke ni Lakay install script failed with exit code ' +
                    IntToStr(ResultCode) + '.' + #13#10 + #13#10 +
                    'The full output is in:' + #13#10 + ExpandConstant('{log}'));
 

@@ -59,8 +59,8 @@ class TestEnqueue:
         """Test that Pikaraoke user bypasses song limit."""
         mock_karaoke.preferences.set("limit_user_songs_by", 1)
 
-        mock_karaoke.queue_manager.enqueue("/songs/song1---abc.mp4", "Pikaraoke")
-        result = mock_karaoke.queue_manager.enqueue("/songs/song2---def.mp4", "Pikaraoke")
+        mock_karaoke.queue_manager.enqueue("/songs/song1---abc.mp4", "Karaoke ni Lakay")
+        result = mock_karaoke.queue_manager.enqueue("/songs/song2---def.mp4", "Karaoke ni Lakay")
 
         assert result[0] is True
         assert len(mock_karaoke.queue_manager.queue) == 2

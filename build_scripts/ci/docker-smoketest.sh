@@ -20,7 +20,7 @@ for i in {1..60}; do
 done
 
 if [ "$INITIALIZED" = false ]; then
-  echo "Error: Timed out waiting for PiKaraoke to initialize."
+  echo "Error: Timed out waiting for Karaoke ni Lakay to initialize."
   docker logs "$CONTAINER_NAME"
   exit 1
 fi

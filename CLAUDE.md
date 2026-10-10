@@ -1,10 +1,10 @@
 # CLAUDE.md
 
-Guidance for Claude Code when working on PiKaraoke.
+Guidance for Claude Code when working on Karaoke ni Lakay.
 
 ## Project Overview
 
-PiKaraoke is a karaoke system for Raspberry Pi, Windows, macOS, and Linux. Web interface for YouTube song search, queuing, and playback with pitch shifting and streaming.
+Karaoke ni Lakay (a fork of PiKaraoke; the code keeps its internal name `pikaraoke`) is a karaoke system for Raspberry Pi, Windows, macOS, and Linux. Web interface for YouTube song search, queuing, and playback with pitch shifting and streaming.
 
 ## Core Principles
 

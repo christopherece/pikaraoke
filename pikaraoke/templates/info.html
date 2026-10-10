@@ -869,7 +869,7 @@
 						{# MSG: Help text which explains why updating yt-dlp can fail. The log is a file on the machine running Pikaraoke. #}
 						{% trans -%}
 							* This update link above may fail if you don't have proper file permissions.
-							Check the pikaraoke log for errors.
+							Check the {{ site_title }} log for errors.
 						{%- endtrans %}
 					</p>
 				</div>
@@ -891,7 +891,7 @@
 					<div class="content">
 						{# MSG: Explainitory text which explains why you might want to expand the filesystem. #}
 						<p>{% trans -%}
-							If you just installed the pre-built pikaraoke pi image and your SD card is larger than 4GB,
+							If you installed from a pre-built Raspberry Pi image and your SD card is larger than 4GB,
 							you may want to expand the filesystem to utilize the remaining space. You only need to do this once.
 							This will reboot the system.
 						{%- endtrans %}</p>

@@ -184,4 +184,6 @@ class Browser:
             self.browser_process.wait()
             self.browser_process = None
         else:
-            logging.warning("Browser opened via system default cannot be closed by PiKaraoke.")
+            logging.warning(
+                "Browser opened via system default cannot be closed by Karaoke ni Lakay."
+            )

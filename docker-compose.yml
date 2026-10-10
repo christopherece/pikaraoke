@@ -5,8 +5,8 @@
 #                           # and the app (uid 1000) cannot write to them
 #   docker compose up -d --build
 #
-# Builds locally rather than pulling vicwomg/pikaraoke, which is the upstream
-# app without this fork's branding.
+# Builds locally: the upstream image on Docker Hub does not include
+# Karaoke ni Lakay's changes.
 
 services:
   karaoke-ni-lakay:

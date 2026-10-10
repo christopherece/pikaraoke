@@ -19,5 +19,7 @@ def now_playing():
     try:
         return jsonify(k.get_now_playing())
     except Exception as e:
-        logging.error("Problem loading /nowplaying, pikaraoke may still be starting up: " + str(e))
+        logging.error(
+            "Problem loading /nowplaying, Karaoke ni Lakay may still be starting up: " + str(e)
+        )
         return ""

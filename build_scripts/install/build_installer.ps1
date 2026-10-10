@@ -5,7 +5,7 @@ Param(
 
 $ErrorActionPreference = "Stop"
 
-Write-Host "--- PiKaraoke Installer Build ---" -ForegroundColor Cyan
+Write-Host "--- Karaoke ni Lakay Installer Build ---" -ForegroundColor Cyan
 
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..\..")
 $issPath = Join-Path $PSScriptRoot "pikaraoke.iss"
@@ -44,7 +44,7 @@ Write-Host "Building version: $Version" -ForegroundColor Yellow
 & $iscc "/DAppVersion=$Version" $issPath
 if ($LASTEXITCODE -ne 0) { throw "Inno Setup compilation failed with exit code $LASTEXITCODE" }
 
-$output = Join-Path $repoRoot "dist\PiKaraoke-$Version-setup.exe"
+$output = Join-Path $repoRoot "dist\Karaoke-ni-Lakay-$Version-setup.exe"
 
 Write-Host "`n--------------------------------------------------------" -ForegroundColor Green
 Write-Host "Build complete!" -ForegroundColor Green

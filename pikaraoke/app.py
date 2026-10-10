@@ -229,7 +229,7 @@ def main() -> None:
 
     if not is_ffmpeg_installed():
         logging.error(
-            "ffmpeg is not installed, which is required to run PiKaraoke. See: https://www.ffmpeg.org/"
+            "ffmpeg is not installed, which is required to run Karaoke ni Lakay. See: https://www.ffmpeg.org/"
         )
         sys.exit(1)
 

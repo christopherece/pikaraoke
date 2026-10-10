@@ -1,8 +1,8 @@
 [project]
 name = "pikaraoke"
 version = "1.23.0"
-description = "Youtube-based Karaoke machine for Raspberry Pi, OSX, Windows, and Linux"
-authors = [{name = "Vic Wong"}]
+description = "Karaoke ni Lakay: a YouTube-based karaoke machine for Raspberry Pi, OSX, Windows, and Linux"
+authors = [{name = "christopherece"}, {name = "Vic Wong"}]
 readme = "docs/README.md"
 requires-python = ">=3.10"
 keywords = ["karaoke", "ktv", "video", "audio", "youtube", "raspberry-pi", "osx", "windows", "linux"]
@@ -52,8 +52,8 @@ translations = [
 pikaraoke = "pikaraoke.app:main"
 
 [project.urls]
-Homepage = "https://github.com/vicwomg/pikaraoke"
-Repository = "https://github.com/vicwomg/pikaraoke"
+Homepage = "https://github.com/christopherece/pikaraoke"
+Repository = "https://github.com/christopherece/pikaraoke"
 
 [build-system]
 requires = ["hatchling"]

@@ -4,9 +4,9 @@ Param(
 
 $ErrorActionPreference = "Stop"
 
-Write-Host "--- PiKaraoke Windows Uninstaller ---" -ForegroundColor Cyan
+Write-Host "--- Karaoke ni Lakay Windows Uninstaller ---" -ForegroundColor Cyan
 
-Write-Host "This removes the pikaraoke package and its shortcuts."
+Write-Host "This removes Karaoke ni Lakay and its shortcuts."
 Write-Host "Your songs, settings and the shared tools (ffmpeg, deno, uv) are kept."
 
 if (!$NoConfirm) {
@@ -21,11 +21,11 @@ if (!$NoConfirm) {
 if (Get-Command uv -ErrorAction SilentlyContinue) {
     $uvPackages = uv tool list | Out-String
     if ($uvPackages -match "pikaraoke") {
-        Write-Host "Removing pikaraoke via uv..." -ForegroundColor Yellow
+        Write-Host "Removing Karaoke ni Lakay via uv..." -ForegroundColor Yellow
         uv tool uninstall pikaraoke
         if ($LASTEXITCODE -ne 0) { throw "Failed to uninstall pikaraoke via uv tool" }
     } else {
-        Write-Host "pikaraoke is not installed via uv. Nothing to remove."
+        Write-Host "Karaoke ni Lakay is not installed via uv. Nothing to remove."
     }
 
     $uvBinDir = ""
@@ -39,7 +39,7 @@ if (Get-Command uv -ErrorAction SilentlyContinue) {
 Write-Host "Removing desktop shortcuts..." -ForegroundColor Yellow
 try {
     $desktopPath = [System.Environment]::GetFolderPath("Desktop")
-    foreach ($sName in @("PiKaraoke", "PiKaraoke (headless)")) {
+    foreach ($sName in @("Karaoke ni Lakay", "Karaoke ni Lakay (headless)")) {
         $shortcutPath = Join-Path $desktopPath "$sName.lnk"
         if (Test-Path $shortcutPath) {
             Remove-Item $shortcutPath -Force

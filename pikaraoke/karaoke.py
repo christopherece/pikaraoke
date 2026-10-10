@@ -203,7 +203,7 @@ class Karaoke:
         self.youtubedl_version = get_youtubedl_version()
         self.is_raspberry_pi = is_raspberry_pi()
 
-        logging.info("PiKaraoke version: " + VERSION)
+        logging.info("Karaoke ni Lakay version: " + VERSION)
 
         # Set non-preference attributes (not stored in config)
         self.port = port
@@ -689,7 +689,7 @@ class Karaoke:
 
         This method blocks until stop() is called or KeyboardInterrupt.
         """
-        logging.debug("Starting PiKaraoke run loop")
+        logging.debug("Starting Karaoke ni Lakay run loop")
         logging.info(f"Connect the player host to: {self.url}/splash")
         self.running = True
         while self.running:
@@ -741,5 +741,5 @@ class Karaoke:
                 self.playback_controller.log_output()
                 self.handle_run_loop()
             except KeyboardInterrupt:
-                logging.warning("Keyboard interrupt: Exiting pikaraoke...")
+                logging.warning("Keyboard interrupt: Exiting Karaoke ni Lakay...")
                 self.running = False

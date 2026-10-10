@@ -128,7 +128,7 @@ def _announce_halt(message: str, steps: list[HostStep], refused: str = "") -> Re
 def quit():
     """Exit the PiKaraoke application."""
     # MSG: Message shown after quitting pikaraoke.
-    return _announce_halt(_("Exiting pikaraoke now!"), [])
+    return _announce_halt(_("Exiting %(site_title)s now!", site_title=get_site_name()), [])
 
 
 @admin_bp.route("/shutdown", methods=["POST"])

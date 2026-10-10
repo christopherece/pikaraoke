@@ -8,7 +8,7 @@ Param(
 
 $ErrorActionPreference = "Stop"
 
-Write-Host "--- PiKaraoke Windows Installer ---" -ForegroundColor Cyan
+Write-Host "--- Karaoke ni Lakay Windows Installer ---" -ForegroundColor Cyan
 
 function Resolve-PikaraokeExe {
     # uv's bin dir first, so an unrelated pip install earlier on PATH does not win.
@@ -31,7 +31,7 @@ if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
 }
 
 # Determine packages to install
-$installList = @("pikaraoke (via uv)")
+$installList = @("Karaoke ni Lakay (via uv)")
 $skipDeno = $false
 if (Get-Command node -ErrorAction SilentlyContinue) {
     Write-Host "Node.js detected. Skipping Deno installation."
@@ -98,23 +98,24 @@ Write-Host "Checking for existing uv installations..." -ForegroundColor Yellow
 $uvPackages = ""
 $uvPackages = uv tool list | Out-String
 
-# 6. install pikaraoke with uv
+# 6. install Karaoke ni Lakay with uv: this fork from GitHub, not upstream pikaraoke from PyPI
+$packageSource = "git+https://github.com/christopherece/pikaraoke"
 if ($uvPackages -match "pikaraoke") {
-    Write-Host "Upgrading pikaraoke via uv..." -ForegroundColor Yellow
+    Write-Host "Upgrading Karaoke ni Lakay via uv..." -ForegroundColor Yellow
     if ($Local) {
         uv tool install --force .
     } else {
-        uv tool upgrade pikaraoke
+        uv tool install --force $packageSource
     }
 } else {
-    Write-Host "Installing pikaraoke via uv..." -ForegroundColor Yellow
+    Write-Host "Installing Karaoke ni Lakay via uv..." -ForegroundColor Yellow
     if ($Local) {
         uv tool install .
     } else {
-        uv tool install pikaraoke
+        uv tool install $packageSource
     }
 }
-if ($LASTEXITCODE -ne 0) { throw "Failed to install/upgrade pikaraoke via uv tool" }
+if ($LASTEXITCODE -ne 0) { throw "Failed to install/upgrade Karaoke ni Lakay via uv tool" }
 
 # 7. Locate the installed executable
 $pikaraokeExe = Resolve-PikaraokeExe
@@ -142,7 +143,7 @@ if ($NoShortcuts) {
             $iconPath = Join-Path ([System.IO.Path]::GetDirectoryName($pikaraokeExe)) "logo.ico"
             $iconFound = $false
             try {
-                $iconUrl = "https://raw.githubusercontent.com/vicwomg/pikaraoke/refs/heads/master/pikaraoke/static/icons/logo.ico"
+                $iconUrl = "https://raw.githubusercontent.com/christopherece/pikaraoke/refs/heads/master/pikaraoke/static/icons/logo.ico"
                 if (!(Test-Path $iconPath)) {
                     Invoke-WebRequest -Uri $iconUrl -OutFile $iconPath -ErrorAction Stop
                 }
@@ -153,8 +154,8 @@ if ($NoShortcuts) {
 
             # Create multiple shortcuts
             $shortcutConfigs = @(
-                @{ Name = "PiKaraoke"; Args = "" },
-                @{ Name = "PiKaraoke (headless)"; Args = "--headless" }
+                @{ Name = "Karaoke ni Lakay"; Args = "" },
+                @{ Name = "Karaoke ni Lakay (headless)"; Args = "--headless" }
             )
 
             foreach ($config in $shortcutConfigs) {
@@ -181,6 +182,6 @@ if ($NoShortcuts) {
 Write-Host "`n--------------------------------------------------------" -ForegroundColor Green
 Write-Host "Installation complete!" -ForegroundColor Green
 Write-Host "Please restart your terminal (PowerShell) to ensure all PATH changes are loaded."
-Write-Host "Then, simply run: `pikaraoke` or launch PiKaraoke from the desktop shortcuts."
+Write-Host "Then, simply run: `pikaraoke` or launch Karaoke ni Lakay from the desktop shortcuts."
 Write-Host "`nTIP: Put your karaoke files in: $(Join-Path $HOME 'pikaraoke-songs')" -ForegroundColor Cyan
 Write-Host "--------------------------------------------------------"

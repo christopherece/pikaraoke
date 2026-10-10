@@ -1,5 +1,5 @@
-# PiKaraoke Headless Mode Verification Script (Windows)
-# This script starts PiKaraoke in headless mode, waits for initialization,
+# Karaoke ni Lakay Headless Mode Verification Script (Windows)
+# This script starts Karaoke ni Lakay in headless mode, waits for initialization,
 # and verifies that key web endpoints are serving content.
 
 $ErrorActionPreference = "Stop"
@@ -7,17 +7,17 @@ $ErrorActionPreference = "Stop"
 # Ensure pikaraoke is in the PATH for this session
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
-Write-Host "Installing PiKaraoke for CI..."
+Write-Host "Installing Karaoke ni Lakay for CI..."
 ./build_scripts/install/install.ps1 -NoConfirm -Local
 
 # Reload path again just in case installer updated it
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
-Write-Host "Starting PiKaraoke in headless mode..."
+Write-Host "Starting Karaoke ni Lakay in headless mode..."
 $proc = Start-Process pikaraoke -ArgumentList "--headless", "--skip-youtubedl-upgrade" -PassThru -RedirectStandardOutput output.log -RedirectStandardError error.log
 
 try {
-    Write-Host "Waiting for PiKaraoke to initialize (max 30s)..."
+    Write-Host "Waiting for Karaoke ni Lakay to initialize (max 30s)..."
     $initialized = $false
     for ($i=0; $i -lt 30; $i++) {
         if (Test-Path output.log, error.log) {
@@ -31,7 +31,7 @@ try {
     }
 
     if (-not $initialized) {
-        Write-Error "Timed out waiting for PiKaraoke to initialize."
+        Write-Error "Timed out waiting for Karaoke ni Lakay to initialize."
         if (Test-Path output.log) { Write-Host "--- STDOUT ---"; Get-Content output.log }
         if (Test-Path error.log) { Write-Host "--- STDERR ---"; Get-Content error.log }
         exit 1
