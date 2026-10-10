@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.1.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-08-28 08:48+1000\n"
+"POT-Creation-Date: 2026-10-10 13:04+1300\n"
 "PO-Revision-Date: 2026-02-13 11:48+0700\n"
 "Last-Translator: birudanoranye@gmail.com\n"
 "Language-Team: Indonesian <LL@li.org>\n"
@@ -19,103 +19,109 @@ msgstr ""
 
 #. Message shown after the song is transposed, first is the semitones and then
 #. the song name
-#: karaoke.py:559
+#: karaoke.py:566
 #, python-format
 msgid "Transposing by %s semitones: %s"
 msgstr "Menggeser nada %s setengah nada: %s"
 
 #. Message shown after the volume is changed, will be followed by the volume
 #. level
-#: karaoke.py:573
+#: karaoke.py:580
 #, python-format
 msgid "Volume: %s"
 msgstr "Volume: %s"
 
-#: lib/download_manager.py:264
+#. Message shown when someone who is not the host tries a host-only action.
+#: lib/auth.py:102
+#, fuzzy
+msgid "You don't have permission to do that"
+msgstr "Anda tidak memiliki izin untuk merestart"
+
+#: lib/download_manager.py:265
 #, python-format
 msgid "Download queued (#%d): %s"
 msgstr "Antrian download (#%d): %s"
 
 #. Message shown when download is added and will start immediately
-#: lib/download_manager.py:268
+#: lib/download_manager.py:269
 #, python-format
 msgid "Download starting: %s"
 msgstr "Mulai mengunduh: %s"
 
 #. Message shown when download actually starts (after waiting in queue)
-#: lib/download_manager.py:457
+#: lib/download_manager.py:463
 #, python-format
 msgid "Downloading video: %s"
 msgstr "Sedang mengunduh video: %s"
 
-#: lib/download_manager.py:483
+#: lib/download_manager.py:489
 msgid "Error downloading song: "
 msgstr "Gagal mengunduh lagu: "
 
-#: lib/download_manager.py:503
+#: lib/download_manager.py:509
 #, python-format
 msgid "Downloaded and queued: %s"
 msgstr "Berhasil diunduh dan ditambahkan ke antrian: %s"
 
 #. Message shown after the download is completed but not queued
-#: lib/download_manager.py:507
+#: lib/download_manager.py:513
 #, python-format
 msgid "Downloaded: %s"
 msgstr "Telah diunduh: %s"
 
-#: lib/download_manager.py:531
+#: lib/download_manager.py:541
 msgid "Error queueing song: "
 msgstr "Gagal menambahkan lagu ke antrian: "
 
 # auto-translated
-#: lib/playback_controller.py:91
+#: lib/playback_controller.py:100
 #, python-format
 msgid "Song file not found: %s"
 msgstr "File lagu tidak ditemukan: %s"
 
 # auto-translated
-#: lib/playback_controller.py:125
+#: lib/playback_controller.py:135
 msgid "Stream was not playable! Skipping track"
 msgstr "Streaming tidak dapat diputar! Melewati jalur"
 
 #. Message shown when the song ends abnormally
-#: lib/playback_controller.py:163
+#: lib/playback_controller.py:228
 #, python-format
 msgid "Song ended abnormally: %s"
 msgstr "Lagu berhenti tidak normal: %s"
 
 #. Message shown after the song is skipped, will be followed by song name
-#: lib/playback_controller.py:191
+#: lib/playback_controller.py:255
 #, python-format
 msgid "Skip: %s"
 msgstr "Lewati: %s"
 
 #. Message shown after the song is resumed, will be followed by song name
-#: lib/playback_controller.py:207
+#: lib/playback_controller.py:271
 #, python-format
 msgid "Resume: %s"
 msgstr "Lanjutkan: %s"
 
 # auto-translated
 #. Message shown after the song is paused, will be followed by song name
-#: lib/playback_controller.py:210
+#: lib/playback_controller.py:274
 #, python-format
 msgid "Pause: %s"
 msgstr "Jeda: %s"
 
-#: lib/preference_manager.py:144
+#: lib/preference_manager.py:146
 msgid "Your preferences were changed successfully"
 msgstr "Pengaturan Anda berhasil disimpan"
 
-#: lib/preference_manager.py:147 templates/info.html:19
+#: lib/preference_manager.py:149 templates/info.html:19
 msgid "Something went wrong! Your preferences were not changed"
 msgstr "Terjadi kesalahan! Pengaturan tidak berhasil disimpan"
 
-#: lib/preference_manager.py:164
+#: lib/preference_manager.py:166
 msgid "Your preferences were cleared successfully"
 msgstr "Pengaturan berhasil dihapus"
 
-#: lib/preference_manager.py:167
+#: lib/preference_manager.py:169
 msgid "Something went wrong! Your preferences were not cleared"
 msgstr "Terjadi kesalahan! Pengaturan tidak berhasil dihapus"
 
@@ -150,132 +156,125 @@ msgstr "Lagu berhasil ditambahkan ke antrian: %s"
 msgid "Clear queue"
 msgstr "Kosongkan antrian"
 
-#: lib/stream_manager.py:124
+#: lib/stream_manager.py:141
 #, python-format
 msgid "Error resolving file: %s"
 msgstr "Gagal membaca file: %s"
 
 # auto-translated
-#: lib/stream_manager.py:160
+#: lib/stream_manager.py:178
 msgid "Failed to prepare stream"
 msgstr "Gagal menyiapkan streaming"
 
 #. Message shown after starting the yt-dlp update.
-#: routes/admin.py:64
+#: routes/admin.py:110
 msgid "Updating yt-dlp! Should take a minute or two... "
 msgstr "Sedang memperbarui yt-dlp! Mohon tunggu 1–2 menit..."
 
-#. Message shown after trying to update yt-dlp without admin permissions.
-#: routes/admin.py:71
-msgid "You don't have permission to update yt-dlp"
-msgstr "Anda tidak memiliki izin untuk memperbarui yt-dlp"
-
 #. Message shown after quitting pikaraoke.
-#: routes/admin.py:102
-msgid "Exiting pikaraoke now!"
-msgstr "Menutup Pikaraoke sekarang!"
-
-#. Message shown after trying to quit pikaraoke without admin permissions.
-#: routes/admin.py:109
-msgid "You don't have permission to quit"
-msgstr "Anda tidak memiliki izin untuk keluar"
+#: routes/admin.py:131
+#, python-format
+msgid "Exiting %(site_title)s now!"
+msgstr "Menutup %(site_title)s sekarang!"
 
 #. Message shown after shutting down the system.
-#: routes/admin.py:119
+#: routes/admin.py:139
 msgid "Shutting down system now!"
 msgstr "Mematikan sistem sekarang!"
 
-#. Message shown after trying to shut down the system without admin
-#. permissions.
-#: routes/admin.py:126
-msgid "You don't have permission to shut down"
-msgstr "Anda tidak memiliki izin untuk mematikan sistem"
+#. Message shown when the system refuses to let pikaraoke shut it down.
+#: routes/admin.py:143
+#, python-format
+msgid ""
+"Shutdown failed: %(site_title)s does not have permission to power off this "
+"system."
+msgstr ""
 
 #. Message shown after rebooting the system.
-#: routes/admin.py:136
+#: routes/admin.py:154
 msgid "Rebooting system now!"
 msgstr "Merestart sistem sekarang!"
 
-#. Message shown after trying to reboot the system without admin permissions.
-#: routes/admin.py:143
-msgid "You don't have permission to Reboot"
-msgstr "Anda tidak memiliki izin untuk merestart"
+#. Message shown when the system refuses to let pikaraoke reboot it.
+#: routes/admin.py:158
+#, fuzzy, python-format
+msgid ""
+"Reboot failed: %(site_title)s does not have permission to restart this "
+"system."
+msgstr "Anda tidak memiliki izin untuk mengubah ukuran partisi"
 
 #. Message shown after expanding the filesystem.
-#: routes/admin.py:153
+#: routes/admin.py:170
 msgid "Expanding filesystem and rebooting system now!"
 msgstr "Sedang memperluas partisi dan akan restart sistem..."
 
+#. Message shown when the system refuses to let pikaraoke expand the
+#. filesystem.
+#: routes/admin.py:173
+#, fuzzy, python-format
+msgid ""
+"Expand failed: %(site_title)s does not have permission to resize the "
+"filesystem."
+msgstr "Anda tidak memiliki izin untuk mengubah ukuran partisi"
+
 #. Message shown after trying to expand the filesystem on a non-raspberry pi
 #. device.
-#: routes/admin.py:158
+#: routes/admin.py:179
 msgid "Cannot expand fs on non-raspberry pi devices!"
 msgstr "Tidak bisa memperluas partisi di perangkat non-Raspberry Pi!"
 
-#. Message shown after trying to expand the filesystem without admin
-#. permissions
-#: routes/admin.py:161
-msgid "You don't have permission to resize the filesystem"
-msgstr "Anda tidak memiliki izin untuk mengubah ukuran partisi"
-
 #. Message shown after logging in as admin successfully
-#: routes/admin.py:180
+#: routes/admin.py:190
 msgid "Admin mode granted!"
 msgstr "Mode admin diaktifkan!"
 
 #. Message shown after failing to login as admin
-#: routes/admin.py:183
+#: routes/admin.py:193
 msgid "Incorrect admin password!"
 msgstr "Kata sandi admin salah!"
 
 # auto-translated
-#. Message shown after trying to change the admin password without permission.
-#: routes/admin.py:193
-msgid "You don't have permission to change the admin password"
-msgstr "Anda tidak memiliki izin untuk mengubah kata sandi admin"
-
-# auto-translated
 #. Message shown after setting a new admin password.
-#: routes/admin.py:205
+#: routes/admin.py:210
 msgid "Admin password set. Other devices will need to log in again."
 msgstr "Kata sandi admin disetel. Perangkat lain harus masuk lagi."
 
 # auto-translated
 #. Message shown after clearing the admin password, making everyone an admin.
-#: routes/admin.py:208
+#: routes/admin.py:213
 msgid "Admin password cleared. Everyone is an admin again."
 msgstr "Kata sandi admin dihapus. Semua orang menjadi admin lagi."
 
 #. Message shown after logging out as admin successfully
-#: routes/admin.py:217
+#: routes/admin.py:225
 msgid "Logged out of admin mode!"
 msgstr "Telah keluar dari mode admin!"
 
 #. Title of the button to accept the suggested name
-#: routes/batch_song_renamer.py:147
+#: routes/batch_song_renamer.py:136
 msgid "Accept suggested name"
 msgstr "Terima nama yang disarankan"
 
 #. Title of the files page.
-#: routes/batch_song_renamer.py:155
+#: routes/batch_song_renamer.py:144
 msgid "Batch Song Renamer"
 msgstr "Pengganti Nama Lagu Massal"
 
 # auto-translated
-#: routes/batch_song_renamer.py:244
+#: routes/batch_song_renamer.py:237
 #, python-format
 msgid "Error: Can't edit this song because it is queued or playing: %s"
 msgstr ""
 "Kesalahan: Tidak dapat mengedit lagu ini karena sedang dalam antrean atau "
 "diputar: %s"
 
-#: routes/batch_song_renamer.py:251
+#: routes/batch_song_renamer.py:244
 #, python-format
 msgid "Error renaming file: '%s' to '%s', Filename already exists"
 msgstr "Gagal mengganti nama: '%s' → '%s', nama file sudah ada"
 
 # auto-translated
-#: routes/batch_song_renamer.py:260 routes/files.py:316
+#: routes/batch_song_renamer.py:253 routes/files.py:309
 msgid ""
 "This song started playing while you were editing it. Rename it when it "
 "finishes."
@@ -285,7 +284,7 @@ msgstr ""
 
 # auto-translated
 #. Message shown after a rename failed. Followed by the system error.
-#: routes/batch_song_renamer.py:265 routes/files.py:322
+#: routes/batch_song_renamer.py:258 routes/files.py:315
 #, python-format
 msgid "Error renaming file: %s"
 msgstr "Kesalahan saat mengganti nama file: %s"
@@ -293,53 +292,43 @@ msgstr "Kesalahan saat mengganti nama file: %s"
 # auto-translated
 #. Title of the page listing the songs already on this machine.
 #. Navigation link for the page listing songs already on this machine.
-#: routes/files.py:188 templates/base.html:454 templates/base.html:457
+#: routes/files.py:190 templates/base.html:461 templates/base.html:464
 msgid "Songs"
 msgstr "Lagu"
 
 # auto-translated
-#: routes/files.py:217
-msgid "You don't have permission to delete songs"
-msgstr "Anda tidak memiliki izin untuk menghapus lagu"
-
-# auto-translated
 #. Message shown after trying to delete a song that is queued or playing.
-#: routes/files.py:222
+#: routes/files.py:221
 msgid "Error: Can't delete this song because it is queued or playing"
 msgstr ""
 "Kesalahan: Tidak dapat menghapus lagu ini karena sedang dalam antrean atau "
 "sedang diputar"
 
-#: routes/files.py:229
+#: routes/files.py:228
 #, python-format
 msgid "Song deleted: %s"
 msgstr "Lagu dihapus: %s"
 
 # auto-translated
 #. Title of the page where a song can be renamed.
-#: routes/files.py:241
+#: routes/files.py:240
 msgid "Rename Song"
 msgstr "Ganti Nama Lagu"
 
 # auto-translated
-#: routes/files.py:262 routes/files.py:285
-msgid "You don't have permission to rename songs"
-msgstr "Anda tidak memiliki izin untuk mengganti nama lagu"
-
-# auto-translated
 #. Message shown after trying to rename the song that is playing.
-#: routes/files.py:266
+#: routes/files.py:262
 msgid "This song is playing. Rename it when it finishes."
 msgstr "Lagu ini sedang diputar. Ganti namanya jika sudah selesai."
 
 # auto-translated
 #. Message shown after saving the rename page with an empty name.
-#: routes/files.py:290
+#: routes/files.py:283
 msgid "Enter a name for this song."
 msgstr "Masukkan nama untuk lagu ini."
 
 # auto-translated
-#: routes/files.py:296
+#: routes/files.py:289
 msgid ""
 "This song is no longer in the library. It may have been renamed or deleted "
 "from another device."
@@ -349,134 +338,68 @@ msgstr ""
 
 # auto-translated
 #. Message shown after trying to rename a song to a name already in use.
-#: routes/files.py:308
+#: routes/files.py:301
 #, python-format
 msgid "A song called '%s' already exists."
 msgstr "Lagu berjudul '%s' sudah ada."
 
 #. Message shown after renaming a file.
-#: routes/files.py:327
+#: routes/files.py:320
 #, python-format
 msgid "Renamed file: %s to %s"
 msgstr "Nama file diubah: %s → %s"
 
 #. Title of the home page, which shows the song playing now.
-#: routes/home.py:24
+#: routes/home.py:26
 msgid "Now Playing"
 msgstr "Sedang Diputar"
 
 # auto-translated
 #. Title of the settings and system information page.
 #. Dropdown link to the settings and system information page.
-#: routes/info.py:43 templates/base.html:509
+#: routes/info.py:55 templates/base.html:520
 msgid "Settings"
 msgstr "Pengaturan"
 
-#: routes/info.py:116
+#: routes/info.py:129
 msgid "CPU usage query unsupported"
 msgstr "Tidak mendukung pengecekan penggunaan CPU"
 
-#. Message shown after trying to change preferences without admin permissions.
-#: routes/preferences.py:42
-msgid "You don't have permission to change preferences"
-msgstr "Anda tidak memiliki izin mengubah pengaturan"
-
-#. Message shown after trying to clear preferences without admin permissions.
-#: routes/preferences.py:59
-msgid "You don't have permission to clear preferences"
-msgstr "Anda tidak memiliki izin menghapus pengaturan"
-
 #. Title of the queue page.
 #. Navigation link for the queue page.
-#: routes/queue.py:58 templates/base.html:447
+#: routes/queue.py:28 templates/base.html:454
 msgid "Queue"
 msgstr "Antrian"
 
-# auto-translated
-#: routes/queue.py:74
-msgid "You don't have permission to add random songs"
-msgstr "Anda tidak memiliki izin untuk menambahkan lagu secara acak"
-
-#. Message shown after adding random tracks
-#: routes/queue.py:80
-#, python-format
-msgid "Added %s random tracks"
-msgstr "Menambahkan %s lagu acak"
-
 #. Message shown after running out songs to add during random track addition
-#: routes/queue.py:83
+#: routes/queue_api.py:65
 msgid "Ran out of songs!"
 msgstr "Lagu sudah habis!"
 
-#. Message shown when non-admin tries to edit queue
-#: routes/queue.py:115
-msgid "Unauthorized"
-msgstr "Tidak diizinkan"
-
-#: routes/queue.py:125
-msgid "Cleared the queue!"
-msgstr "Antrian telah dikosongkan!"
-
-#: routes/queue.py:137
-msgid "Moved to top of queue"
-msgstr "Dipindah ke posisi teratas antrian"
-
-#: routes/queue.py:138
-msgid "Moved to bottom of queue"
-msgstr "Dipindah ke posisi terbawah antrian"
-
-#: routes/queue.py:139
-msgid "Moved up in queue"
-msgstr "Naik satu posisi dalam antrian"
-
-#: routes/queue.py:140
-msgid "Moved down in queue"
-msgstr "Turun satu posisi dalam antrian"
-
-#: routes/queue.py:141
-msgid "Deleted from queue"
-msgstr "Dihapus dari antrian"
-
 # auto-translated
-#: routes/queue.py:144
-msgid "Error moving to top of queue"
-msgstr "Terjadi kesalahan saat berpindah ke antrean teratas"
-
-# auto-translated
-#: routes/queue.py:145
-msgid "Error moving to bottom of queue"
-msgstr "Terjadi kesalahan saat berpindah ke antrean terbawah"
-
-#: routes/queue.py:146
-msgid "Error moving up in queue"
-msgstr "Gagal memindahkan ke atas"
-
-#: routes/queue.py:147
-msgid "Error moving down in queue"
-msgstr "Gagal memindahkan ke bawah"
-
-#: routes/queue.py:148
-msgid "Error deleting from queue"
-msgstr "Gagal menghapus dari antrian"
+#: routes/queue_api.py:118
+#, fuzzy, python-format
+msgid "That song is not in the library: %s"
+msgstr "Lagu ini sudah tidak ada lagi di perpustakaan"
 
 # auto-translated
 #. Title of the page used to get new songs into the library.
 #. Navigation link for the page used to get new songs into the library.
-#: routes/search.py:61 templates/base.html:460 templates/base.html:463
+#: routes/search.py:47 templates/base.html:467 templates/base.html:470
 msgid "Add New"
 msgstr "Tambahkan Baru"
 
-# auto-translated
-#. Message shown when a non-admin tries to open a host-only history page
-#: routes/sessions.py:63
-msgid "You don't have permission to view this page"
-msgstr "Anda tidak memiliki izin untuk melihat halaman ini"
+#: routes/search_api.py:70
+msgid ""
+"Your plan's song storage is full. Delete some songs, or ask your provider "
+"for a bigger plan."
+msgstr ""
 
 # auto-translated
 #. Title of the session management page.
 #. Dropdown link to the karaoke session management page, only shown to the
 #. host.
-#: routes/sessions.py:79 templates/base.html:503
+#: routes/sessions.py:64 templates/base.html:514
 msgid "Sessions"
 msgstr "Sesi"
 
@@ -484,44 +407,44 @@ msgstr "Sesi"
 #. Title of the page logging everything that has been sung.
 #. Dropdown link to the log of everything that has been sung.
 #. Header of the play history management section of the settings page.
-#: routes/sessions.py:95 templates/base.html:496 templates/info.html:425
+#: routes/sessions.py:81 templates/base.html:507 templates/info.html:458
 msgid "Play History"
 msgstr "Mainkan Sejarah"
 
 # auto-translated
 #. Title of the most-played songs and most active singers page.
 #. Dropdown link to the most-played songs and most active singers.
-#: routes/sessions.py:117 templates/base.html:491
+#: routes/sessions.py:104 templates/base.html:502
 msgid "Rankings"
 msgstr "Peringkat"
 
 # auto-translated
 #. Error when starting a session without supplying a name
 #. Error when renaming a session without supplying a name
-#: routes/sessions_api.py:105 routes/sessions_api.py:160
+#: routes/sessions_api.py:86 routes/sessions_api.py:141
 msgid "A name is required"
 msgstr "Diperlukan nama"
 
 # auto-translated
 #. Error when resetting one session's plays without saying which session
-#: routes/sessions_api.py:135
+#: routes/sessions_api.py:116
 msgid "A session is required"
 msgstr "Diperlukan sesi"
 
 # auto-translated
-#: routes/sessions_api.py:209
+#: routes/sessions_api.py:193
 msgid "Play not found"
 msgstr "Pemutaran tidak ditemukan"
 
 # auto-translated
-#: routes/sessions_api.py:250 routes/sessions_api.py:254
-#: routes/sessions_api.py:277 routes/sessions_api.py:286
-#: routes/sessions_api.py:343
+#: routes/sessions_api.py:234 routes/sessions_api.py:238
+#: routes/sessions_api.py:252 routes/sessions_api.py:261
+#: routes/sessions_api.py:322
 msgid "Session not found"
 msgstr "Sesi tidak ditemukan"
 
 # auto-translated
-#: routes/sessions_api.py:312
+#: routes/sessions_api.py:287
 msgid "Played At"
 msgstr "Dimainkan Pada"
 
@@ -529,7 +452,7 @@ msgstr "Dimainkan Pada"
 #. Label before the name of the singer the play log is filtered to.
 #. Play log column header for who sang the song.
 #. Ranking table column header for the person who sang.
-#: routes/sessions_api.py:312 templates/history.html:411
+#: routes/sessions_api.py:287 templates/history.html:411
 #: templates/history.html:468 templates/rankings.html:175
 msgid "Performer"
 msgstr "Pemain"
@@ -538,78 +461,78 @@ msgstr "Pemain"
 #. Label before the name of the song the play log is filtered to.
 #. Play log column header for the song that was sung.
 #. Ranking table column header for the song that was sung.
-#: routes/sessions_api.py:312 templates/history.html:431
+#: routes/sessions_api.py:287 templates/history.html:431
 #: templates/history.html:472 templates/rankings.html:127
 msgid "Song"
 msgstr "Lagu"
 
 # auto-translated
-#: routes/sessions_api.py:324
+#: routes/sessions_api.py:301
 #, python-format
 msgid "%(site_title)s - Play History"
 msgstr "%(site_title)s - Mainkan Sejarah"
 
-#: routes/splash.py:24
+#: routes/splash.py:26
 msgid "Never sing again... ever."
 msgstr "Jangan nyanyi lagi... selamanya."
 
-#: routes/splash.py:25
+#: routes/splash.py:27
 msgid "That was a really good impression of a dying cat!"
 msgstr "Itu sangat mirip suara kucing sekarat!"
 
-#: routes/splash.py:26
+#: routes/splash.py:28
 msgid "Thank God it's over."
 msgstr "Syukurlah sudah selesai."
 
-#: routes/splash.py:27
+#: routes/splash.py:29
 msgid "Pass the mic, please!"
 msgstr "Tolong serahkan mikrofonnya!"
 
-#: routes/splash.py:28
+#: routes/splash.py:30
 msgid "Well, I'm sure you're very good at your day job."
 msgstr "Yah, pasti kamu jago di pekerjaan sehari-hari."
 
-#: routes/splash.py:31
+#: routes/splash.py:33
 msgid "I've seen better."
 msgstr "Sudah pernah dengar yang lebih bagus."
 
-#: routes/splash.py:32
+#: routes/splash.py:34
 msgid "Ok... just ok."
 msgstr "Oke... biasa saja."
 
-#: routes/splash.py:33
+#: routes/splash.py:35
 msgid "Not bad for an amateur."
 msgstr "Lumayan untuk pemula."
 
-#: routes/splash.py:34
+#: routes/splash.py:36
 msgid "You put on a decent show."
 msgstr "Penampilan yang cukup bagus."
 
-#: routes/splash.py:35
+#: routes/splash.py:37
 msgid "That was... something."
 msgstr "Itu... lumayan unik."
 
-#: routes/splash.py:38
+#: routes/splash.py:40
 msgid "Congratulations! That was unbelievable!"
 msgstr "Selamat! Luar biasa sekali!"
 
-#: routes/splash.py:39
+#: routes/splash.py:41
 msgid "Wow, have you tried auditioning for The Voice?"
 msgstr "Wah, pernah ikut audisi The Voice belum?"
 
-#: routes/splash.py:40
+#: routes/splash.py:42
 msgid "Please, sing another one!"
 msgstr "Tolong nyanyi satu lagu lagi!"
 
-#: routes/splash.py:41
+#: routes/splash.py:43
 msgid "You rock! You know that?!"
 msgstr "Kamu keren banget! Sadar ngga sih?!"
 
-#: routes/splash.py:42
+#: routes/splash.py:44
 msgid "Woah, who let Freddie Mercury in here?"
 msgstr "Wah, siapa yang ngajak Freddie Mercury masuk ke sini?"
 
-#: routes/stream.py:238
+#: routes/stream.py:250
 msgid "Failed to stream subtitle: "
 msgstr "Gagal memutar subtitle: "
 
@@ -687,7 +610,7 @@ msgstr "Kesalahan"
 
 #. Prompt which asks the user their name when they first try to add to the
 #. queue.
-#: templates/base.html:118
+#: templates/base.html:126
 msgid ""
 "Please enter your name. This will show up next to the songs you queue up "
 "from this device."
@@ -698,13 +621,13 @@ msgstr ""
 # auto-translated
 #. Accessible label for the banner naming the karaoke session in progress.
 #. {name} is replaced with the session's name.
-#: templates/base.html:210 templates/base.html:524
+#: templates/base.html:218 templates/base.html:535
 #, python-brace-format
 msgid "Current session: {name}"
 msgstr "Sesi saat ini: {name}"
 
 #. Navigation link for the home page.
-#: templates/base.html:441
+#: templates/base.html:448
 msgid "Home"
 msgstr "Beranda"
 
@@ -798,7 +721,7 @@ msgstr "Sarankan dari iTunes"
 
 # auto-translated
 #. Label for iTunes search country dropdown
-#: templates/edit.html:150 templates/info.html:409
+#: templates/edit.html:150 templates/info.html:442
 msgid "iTunes search country"
 msgstr "Negara pencarian iTunes"
 
@@ -819,59 +742,59 @@ msgstr "Hapus lagu ini"
 
 # auto-translated
 #. Button to open the batch song renamer page.
-#: templates/files.html:216
+#: templates/files.html:234
 msgid "Bulk rename"
 msgstr "Ganti nama secara massal"
 
 # auto-translated
 #. Subtitle under the Songs heading, explaining that this page lists songs
 #. already downloaded.
-#: templates/files.html:224
+#: templates/files.html:242
 msgid "Available in the library"
 msgstr "Tersedia di perpustakaan"
 
 # auto-translated
 #. Breadcrumb link back to the top level of the folder view.
-#: templates/files.html:343
+#: templates/files.html:361
 msgid "All folders"
 msgstr "Semua folder"
 
 # auto-translated
 #. Placeholder in the box that filters the songs already on this machine.
-#: templates/files.html:369
+#: templates/files.html:387
 msgid "Search by title, artist..."
 msgstr "Cari berdasarkan judul, artis..."
 
 #. Button which empties the filter box and shows every song again.
 #. Link which clears the text from the search box.
-#: templates/files.html:375 templates/search.html:551
+#: templates/files.html:395 templates/search.html:551
 msgid "Clear"
 msgstr "Hapus"
 
 # auto-translated
 #. Button which lists every song at once, ignoring the folders they are stored
 #. in.
-#: templates/files.html:433
+#: templates/files.html:453
 msgid "All songs"
 msgstr "Semua lagu"
 
 # auto-translated
 #. Button which groups the songs by the folder they are stored in.
-#: templates/files.html:438
+#: templates/files.html:458
 msgid "Folders"
 msgstr "Folder"
 
 # auto-translated
 #. Button which changes how the songs are sorted so they become sorted by
 #. name.
-#: templates/files.html:449
+#: templates/files.html:469
 msgid "Sort Alphabetically"
 msgstr "Urutkan Berdasarkan Abjad"
 
 # auto-translated
 #. Button which changes how the songs are sorted so they become sorted by
 #. date.
-#: templates/files.html:454
+#: templates/files.html:474
 msgid "Sort by Date"
 msgstr "Urutkan berdasarkan Tanggal"
 
@@ -908,7 +831,7 @@ msgid "Playing"
 msgstr "Bermain"
 
 #: templates/history.html:182 templates/queue.html:164
-#: templates/queue.html:386 templates/sessions.html:153
+#: templates/queue.html:385 templates/sessions.html:153
 msgid "Options"
 msgstr "Opsi"
 
@@ -1013,34 +936,39 @@ msgid "Change"
 msgstr "Terapkan"
 
 # auto-translated
-#: templates/home.html:313 templates/info.html:546
+#: templates/home.html:313 templates/info.html:591
 msgid "Microphones"
 msgstr "Mikrofon"
 
+#. Shown on the copy button for a moment after the system info is copied.
+#: templates/info.html:43
+msgid "Copied"
+msgstr ""
+
 #. Confirmation text whe the user selects quit.
-#: templates/info.html:67
+#: templates/info.html:90
 msgid "Are you sure you want to quit?"
 msgstr "Yakin ingin keluar dari aplikasi?"
 
 #. Confirmation text whe the user starts to turn off the machine running
 #. Pikaraoke.
-#: templates/info.html:75
+#: templates/info.html:98
 msgid "Are you sure you want to shut down?"
 msgstr "Yakin ingin mematikan perangkat?"
 
 #. Confirmation text whe the user clears preferences.
-#: templates/info.html:83
+#: templates/info.html:106
 msgid "Are you sure you want to clear your preferences?"
 msgstr "Yakin ingin menghapus semua pengaturan Anda?"
 
 #. Confirmation text whe the user starts to reboot the machine running
 #. Pikaraoke.
-#: templates/info.html:91
+#: templates/info.html:121
 msgid "Are you sure you want to reboot?"
 msgstr "Yakin ingin merestart perangkat?"
 
 #. Confirmation text whe the user asks to update yt-dlp.
-#: templates/info.html:101
+#: templates/info.html:131
 msgid ""
 "Are you sure you want to update yt-dlp right now? Current and pending "
 "downloads may fail."
@@ -1051,7 +979,7 @@ msgstr ""
 # auto-translated
 #. Confirmation text when the user wants to expand the filesystem to take the
 #. entire SD card.
-#: templates/info.html:166 templates/info.html:551
+#: templates/info.html:196 templates/info.html:596
 msgid ""
 "No microphones detected. Connect a USB or Bluetooth mic and click Refresh."
 msgstr ""
@@ -1059,19 +987,19 @@ msgstr ""
 "dan klik Refresh."
 
 # auto-translated
-#: templates/info.html:232
+#: templates/info.html:262
 msgid "Scanning..."
 msgstr "Memindai..."
 
 # auto-translated
-#: templates/info.html:234 templates/info.html:572
+#: templates/info.html:264 templates/info.html:617
 msgid "Refresh"
 msgstr "Menyegarkan"
 
 # auto-translated
 #. Confirmation before deleting the entire play history. The host must type ok
 #. to proceed.
-#: templates/info.html:280
+#: templates/info.html:313
 msgid ""
 "Delete ALL play history - every session and every play, for good? Type "
 "\"ok\" to continue."
@@ -1081,194 +1009,201 @@ msgstr ""
 
 # auto-translated
 #. Notification shown once the play history has been erased.
-#: templates/info.html:287
+#: templates/info.html:320
 msgid "Play history erased"
 msgstr "Riwayat pemutaran terhapus"
 
 # auto-translated
-#: templates/info.html:300
+#: templates/info.html:333
 msgid "Library sync complete"
 msgstr "Sinkronisasi perpustakaan selesai"
 
 #. Label which appears before a url which links to the current page.
-#: templates/info.html:313
+#: templates/info.html:347
 #, python-format
 msgid "URL of %(site_title)s:"
 msgstr "Alamat URL %(site_title)s:"
 
 #. Label before a QR code which brings a frind (pal) to the main page if
 #. scanned, so they can also add songs. QR code follows this text.
-#: templates/info.html:319
+#: templates/info.html:353
 msgid "Handy URL QR code to share with a pal:"
 msgstr "Kode QR alamat yang mudah dibagikan ke teman:"
 
 #. Title of the admin section.
-#: templates/info.html:327 templates/info.html:852
+#: templates/info.html:361 templates/info.html:908
 msgid "Admin"
 msgstr "Admin"
 
 #. Title fo the form to enter the administrator password.
-#: templates/info.html:333
+#: templates/info.html:367
 msgid "Enter the administrator password"
 msgstr "Masukkan kata sandi administrator"
 
 #. Text on submit button for the admin login form.
-#: templates/info.html:342
+#: templates/info.html:375
 msgid "Login"
 msgstr "Masuk"
 
 # auto-translated
 #. Tells a locked-out host how to reset a forgotten admin password.
-#: templates/info.html:347
+#: templates/info.html:380
 #, python-format
 msgid ""
 "Forgotten it? Restart %(site_title)s with --admin-password to set a new one."
 msgstr ""
-"Lupa? Mulai ulang %(site_title)s dengan --admin-password untuk menyetel yang "
-"baru."
+"Lupa? Mulai ulang %(site_title)s dengan --admin-password untuk menyetel yang"
+" baru."
 
 # auto-translated
 #. Title of the song library section.
-#: templates/info.html:356
+#: templates/info.html:389
 msgid "Song Library"
 msgstr "Perpustakaan Lagu"
 
 # auto-translated
 #. Header of the song library management section.
-#: templates/info.html:361
+#: templates/info.html:394
 msgid "Library"
 msgstr "Perpustakaan"
 
 # auto-translated
 #. Song count display in the library card.
-#: templates/info.html:367
+#: templates/info.html:400
 msgid "Songs in library:"
 msgstr "Lagu di perpustakaan:"
 
 # auto-translated
 #. Button to trigger a background library scan.
-#: templates/info.html:371
+#: templates/info.html:404
 msgid "Sync Now"
 msgstr "Sinkronkan Sekarang"
 
 # auto-translated
 #. Help text explaining what Sync Now does.
-#: templates/info.html:375
+#: templates/info.html:408
 msgid "Reconciles the library with the song directory in the background."
 msgstr "Rekonsiliasi perpustakaan dengan direktori lagu di latar belakang."
 
 # auto-translated
 #. Header of the song renaming settings section.
-#: templates/info.html:384
+#: templates/info.html:417
 msgid "Renaming"
 msgstr "Mengganti nama"
 
 # auto-translated
 #. Option for naming songs artist first, e.g. "Abba - Waterloo".
-#: templates/info.html:392
+#: templates/info.html:425
 msgid "Artist - Title"
 msgstr "Artis - Judul"
 
 # auto-translated
 #. Option for naming songs title first, e.g. "Waterloo - Abba".
-#: templates/info.html:394
+#: templates/info.html:427
 msgid "Title - Artist"
 msgstr "Judul - Artis"
 
 # auto-translated
 #. Label for the suggestion name order dropdown
-#: templates/info.html:397
+#: templates/info.html:430
 msgid "Order of iTunes suggested song names"
 msgstr "Urutan nama lagu yang disarankan iTunes"
 
 # auto-translated
 #. Button which deletes the entire play history, every session and every play.
-#: templates/info.html:431
+#: templates/info.html:464
 msgid "Reset all history"
 msgstr "Setel ulang semua riwayat"
 
 # auto-translated
 #. Help text explaining what Reset all history does.
-#: templates/info.html:435
+#: templates/info.html:468
 msgid "Deletes every session and every play on record. This cannot be undone."
 msgstr ""
 "Menghapus setiap sesi dan setiap pemutaran yang direkam. Hal ini tidak dapat"
 " dibatalkan."
 
 #. Title of the user preferences section.
-#: templates/info.html:442
+#: templates/info.html:475
 msgid "User Preferences"
 msgstr "Pengaturan Pengguna"
 
 #. Title text for the splash screen settings section of preferences
-#: templates/info.html:448
+#: templates/info.html:481
 msgid "Splash screen settings"
 msgstr "Pengaturan Layar Pembuka"
 
 #. Checkbox label which enable/disables background video on the Splash Screen
-#: templates/info.html:456
+#: templates/info.html:489
 msgid "Disable background video"
 msgstr "Nonaktifkan video latar belakang"
 
 #. Checkbox label which enable/disables background music on the Splash Screen
-#: templates/info.html:462
+#: templates/info.html:495
 msgid "Disable background music"
 msgstr "Nonaktifkan musik latar belakang"
 
 #. Checkbox label which enable/disables the Score Screen
-#: templates/info.html:468
+#: templates/info.html:501
 msgid "Disable the score screen after each song"
 msgstr "Nonaktifkan layar skor setelah setiap lagu"
 
 #. Checkbox label which enable/disables notifications on the splash screen
-#: templates/info.html:474
+#: templates/info.html:507
 msgid "Hide notifications"
 msgstr "Sembunyikan notifikasi"
 
 # auto-translated
 #. Checkbox label which enable/disables the digital clock on the splash screen
-#: templates/info.html:480
+#: templates/info.html:513
 msgid "Show splash clock"
 msgstr "Tampilkan jam splash"
 
 #. Checkbox label which enable/disables the URL display
-#: templates/info.html:485
-msgid "Hide the URL and QR code"
+#: templates/info.html:518
+#, fuzzy
+msgid "Hide the URL"
+msgstr "Sembunyikan URL dan kode QR"
+
+#. Checkbox label which enable/disables the QR code display
+#: templates/info.html:523
+#, fuzzy
+msgid "Hide the QR code"
 msgstr "Sembunyikan URL dan kode QR"
 
 # auto-translated
 #. Checkbox label which enables/disables the logo in the middle of the splash
 #. screen
-#: templates/info.html:491
+#: templates/info.html:529
 msgid "Hide the logo on the splash screen"
 msgstr "Sembunyikan logo di layar splash"
 
 # auto-translated
 #. Checkbox label which enables/disables the karaoke session name shown under
 #. the logo on the splash screen
-#: templates/info.html:497
+#: templates/info.html:535
 msgid "Hide the session name on the splash screen"
 msgstr "Sembunyikan nama sesi di layar splash"
 
 #. Checkbox label which enable/disables showing overlay data on the splash
 #. screen
-#: templates/info.html:503
+#: templates/info.html:541
 msgid "Hide all overlays, including now playing, up next, and QR code"
 msgstr "Sembunyikan semua overlay (sedang diputar, berikutnya, dan QR code)"
 
 #. Numberbox label for setting the default video volume
-#: templates/info.html:509
+#: templates/info.html:547
 msgid "Default volume of the videos (min 0, max 100)"
 msgstr "Volume default video (min 0, maks 100)"
 
 #. Numberbox label for setting the background music volume
-#: templates/info.html:515
+#: templates/info.html:553
 msgid "Volume of the background music (min 0, max 100)"
 msgstr "Volume musik latar belakang (min 0, maks 100)"
 
 #. Numberbox label for setting the inactive delay before showing the
 #. screensaver
-#: templates/info.html:522
+#: templates/info.html:560
 msgid ""
 "The amount of idle time in seconds before the screen saver activates. Set to"
 " 0 to disable it."
@@ -1276,127 +1211,144 @@ msgstr ""
 "Lama waktu tidak aktif (dalam detik) sebelum screensaver aktif. Isi 0 untuk "
 "menonaktifkan."
 
+#. Numberbox label for setting how large the text and overlays on the splash
+#. screen are drawn
+#: templates/info.html:567
+msgid ""
+"Size of the splash screen overlays, such as 1.5 for a large TV (1 is normal "
+"size)"
+msgstr ""
+
 #. Numberbox label for setting the delay before playing the next song
-#: templates/info.html:529
+#: templates/info.html:574
 msgid "The delay in seconds before starting the next song"
 msgstr "Jeda (detik) sebelum memutar lagu berikutnya"
 
 # auto-translated
-#: templates/info.html:540
+#: templates/info.html:585
 msgid "Audio"
 msgstr "Audio"
 
 # auto-translated
-#: templates/info.html:548
+#: templates/info.html:593
 msgid ""
 "Microphones detected on the server. Audio is routed directly to speakers."
 msgstr "Mikrofon terdeteksi di server. Audio disalurkan langsung ke speaker."
 
 # auto-translated
-#: templates/info.html:556
+#: templates/info.html:601
 msgid "Latency"
 msgstr "Latensi"
 
 # auto-translated
-#: templates/info.html:564
+#: templates/info.html:609
 msgid "Echo cancellation"
 msgstr "Pembatalan gema"
 
 # auto-translated
-#: templates/info.html:566
+#: templates/info.html:611
 msgid "Experimental"
 msgstr "Eksperimental"
 
 # auto-translated
-#: templates/info.html:567
+#: templates/info.html:612
 msgid "(reduces feedback, adds latency)"
 msgstr "(mengurangi umpan balik, menambah latensi)"
 
 # auto-translated
-#: templates/info.html:575
+#: templates/info.html:620
 msgid ""
 "Microphone support is unavailable. Required audio tools are not installed."
 msgstr ""
 "Dukungan mikrofon tidak tersedia. Alat audio yang diperlukan tidak diinstal."
 
 # auto-translated
-#: templates/info.html:578
+#: templates/info.html:623
 msgid "On Linux / Raspberry Pi, install it with:"
 msgstr "Di Linux/Raspberry Pi, instal dengan:"
 
 # auto-translated
-#: templates/info.html:580
+#: templates/info.html:625
 #, python-format
 msgid "and restart %(site_title)s."
 msgstr "dan mulai ulang %(site_title)s."
 
 #. Title text for the Score Phrases section of preferences
-#: templates/info.html:592
+#: templates/info.html:637
 msgid "Score phrases"
 msgstr "Frasa Penilaian"
 
 #. Help text explaining how to add phrases
-#: templates/info.html:599
+#: templates/info.html:644
 msgid "Add one phrase per line in each box and hit save."
 msgstr "Tambahkan satu frasa per baris di setiap kotak, lalu tekan simpan."
 
 #. Title for LOW Score Phrases
-#: templates/info.html:601
+#: templates/info.html:646
 msgid "LOW Score Phrases (score < 30)"
 msgstr "Frasa Skor RENDAH (skor < 30)"
 
 #. Placeholder for the low score phrases textarea
-#: templates/info.html:603
+#: templates/info.html:648
 msgid "Could be better..."
 msgstr "Bisa lebih baik lagi..."
 
 #. Title for MID Score Phrases
-#: templates/info.html:606
-msgid "MID Score Phrases (30 > score < 60)"
+#: templates/info.html:651
+#, fuzzy
+msgid "MID Score Phrases (30 <= score < 60)"
 msgstr "Frasa Skor SEDANG (30 < skor < 60)"
 
 #. Placeholder for the MID score phrases textarea
-#: templates/info.html:608
+#: templates/info.html:653
 msgid "That was ok..."
 msgstr "Lumayan lah..."
 
 #. Title for HIGH Score Phrases
-#: templates/info.html:611
-msgid "HIGH Score Phrases (60 < score)"
+#: templates/info.html:656
+#, fuzzy
+msgid "HIGH Score Phrases (60 <= score)"
 msgstr "Frasa Skor TINGGI (skor > 60)"
 
 #. Placeholder for the HIGH score phrases textarea
-#: templates/info.html:613
-msgid "Wonderfull..."
+#: templates/info.html:658
+#, fuzzy
+msgid "Wonderful..."
 msgstr "Luar biasa!"
 
+#. Button which saves the score phrases entered in the three boxes above it.
+#: templates/info.html:660
+#, fuzzy
+msgid "Save phrases"
+msgstr "Frasa Penilaian"
+
 #. Title text for the language settings section of preferences
-#: templates/info.html:621
+#: templates/info.html:667
 msgid "Language settings"
 msgstr "Pengaturan Bahasa"
 
 #. Label for language selection dropdown
-#: templates/info.html:634
+#: templates/info.html:680
 msgid "Preferred language (requires restart)"
 msgstr "Bahasa pilihan (perlu restart aplikasi)"
 
 #. Title text for the server settings section of preferences
-#: templates/info.html:643
+#: templates/info.html:689
 msgid "Server settings"
 msgstr "Pengaturan Server"
 
 #. Checkbox label which enable/disables audio volume normalization
-#: templates/info.html:650
+#: templates/info.html:696
 msgid "Normalize audio volume"
 msgstr "Normalisasi volume audio"
 
 #. Checkbox label which enable/disables high quality video downloads
-#: templates/info.html:656
+#: templates/info.html:702
 msgid "Download high quality videos"
 msgstr "Unduh video berkualitas tinggi"
 
 #. Checkbox label which enable/disables full transcode before playback
-#: templates/info.html:662
+#: templates/info.html:708
 msgid ""
 "Transcode video completely before playing (better browser compatibility, "
 "slower starts). Buffer size will be ignored.*"
@@ -1405,7 +1357,7 @@ msgstr ""
 "lebih baik, tapi mulai lebih lambat). Ukuran buffer akan diabaikan.*"
 
 #. Checkbox label which enable/disables CDG pixel scaling
-#: templates/info.html:668
+#: templates/info.html:714
 msgid ""
 "Enable CDG pixel scaling (crisper visuals for CDG files, may increase CPU "
 "usage)"
@@ -1415,7 +1367,7 @@ msgstr ""
 
 # auto-translated
 #. Checkbox label which enables automatic cleanup of YouTube song titles
-#: templates/info.html:674
+#: templates/info.html:720
 msgid ""
 "Enable automatic YouTube title cleanup (strips noise words like \"Karaoke "
 "Version HD\")"
@@ -1425,7 +1377,7 @@ msgstr ""
 
 # auto-translated
 #. Checkbox label which enables browsing the song library by folder
-#: templates/info.html:680
+#: templates/info.html:726
 msgid ""
 "Enable folder browsing (adds a Folders view to the Songs page when the "
 "library has subfolders)"
@@ -1434,7 +1386,7 @@ msgstr ""
 "ketika perpustakaan memiliki subfolder)"
 
 #. Numberbox label for audio video synchronization
-#: templates/info.html:687
+#: templates/info.html:733
 msgid ""
 "Fix the audio and video synchronization in seconds (negative = advances "
 "audio | positive = delays audio)"
@@ -1443,19 +1395,19 @@ msgstr ""
 "audio | positif = tunda audio"
 
 #. Numberbox label for limitting the number of songs for each player
-#: templates/info.html:694
+#: templates/info.html:740
 msgid "Limit of songs an individual user can add to the queue (0 = unlimited)"
 msgstr ""
 "Batas lagu yang boleh ditambahkan satu pengguna ke antrian (0 = tanpa batas)"
 
 #. Checkbox label which enable/disables fair queue (round-robin) mode
-#: templates/info.html:700
+#: templates/info.html:746
 msgid "Enable fair queue (round-robin mode ensures users take turns)"
 msgstr ""
 "Aktifkan antrian yang adil (mode round-robin memastikan giliran pengguna)"
 
 #. Numberbox label for setting the buffer size in kilobytes
-#: templates/info.html:707
+#: templates/info.html:753
 msgid ""
 "Buffer size in kilobytes. Transcode this amount of the video before sending "
 "it to the splash screen. "
@@ -1466,13 +1418,13 @@ msgstr ""
 # auto-translated
 #. Label for the dropdown choosing how many songs are shown per page on the
 #. Songs page.
-#: templates/info.html:720
+#: templates/info.html:766
 msgid "Default songs per page."
 msgstr "Lagu default per halaman."
 
 # auto-translated
 #. Shown instead of the keep-awake checkbox when running in a container.
-#: templates/info.html:727
+#: templates/info.html:773
 msgid ""
 "Keep the server awake: unavailable in a container. Disable sleep on the "
 "host."
@@ -1482,7 +1434,7 @@ msgstr ""
 
 # auto-translated
 #. Shown instead of the keep-awake checkbox when the required tool is missing.
-#: templates/info.html:729
+#: templates/info.html:775
 msgid ""
 "Keep the server awake: needs systemd-inhibit (Linux) or caffeinate (macOS)."
 msgstr ""
@@ -1491,96 +1443,131 @@ msgstr ""
 
 # auto-translated
 #. Shown instead of the keep-awake checkbox on platforms without a wake lock.
-#: templates/info.html:731
+#: templates/info.html:777
 msgid "Keep the server awake: not supported on this platform."
 msgstr "Jaga agar server tetap aktif: tidak didukung pada platform ini."
 
 # auto-translated
 #. Checkbox label which stops the server machine from sleeping
-#: templates/info.html:737
+#: templates/info.html:783
 #, python-format
 msgid "Keep the server awake while %(site_title)s is running"
 msgstr "Jaga agar server tetap aktif saat %(site_title)s sedang berjalan"
 
 #. Text for the link where the user can clear all user preferences
-#: templates/info.html:744
+#: templates/info.html:790
 msgid "Clear preferences"
 msgstr "Hapus pengaturan"
 
 #. Title of the system data section.
-#: templates/info.html:752
+#: templates/info.html:798
 msgid "System Data"
 msgstr "Data Sistem"
 
 #. Header of the information section about the computer running Pikaraoke.
-#: templates/info.html:757
+#: templates/info.html:803
 msgid "System Info"
 msgstr "Informasi Sistem"
 
+#. Button that copies the system info below it, for pasting into a bug report.
+#: templates/info.html:805
+msgid "Copy"
+msgstr ""
+
 #. The hardware platform
-#: templates/info.html:763
+#: templates/info.html:811
 msgid "Platform:"
 msgstr "Platform:"
 
 #. The os version
-#: templates/info.html:765
+#: templates/info.html:813
 msgid "OS Version:"
 msgstr "Versi OS:"
 
 #. The version of the program "yt-dlp".
-#: templates/info.html:767
+#: templates/info.html:815
 msgid "yt-dlp version:"
 msgstr "Versi yt-dlp:"
 
+#. The JavaScript runtime yt-dlp uses. Value is a program name, or the
+#. missing-runtime note.
+#: templates/info.html:817
+msgid "JavaScript runtime:"
+msgstr ""
+
+#: templates/info.html:817
+msgid ""
+"none installed, some downloads will fail. Install Deno, Node.js, Bun or "
+"QuickJS"
+msgstr ""
+
 #. The version of the program "ffmpeg".
-#: templates/info.html:769
+#: templates/info.html:819
 msgid "FFmpeg version:"
 msgstr "Versi FFmpeg:"
 
 #. The version of Pikaraoke running right now.
-#: templates/info.html:771
+#: templates/info.html:821
 #, python-format
 msgid "%(site_title)s version:"
 msgstr "Versi %(site_title)s:"
 
+# auto-translated
+#. The venue's hosting plan and how much of its song storage is used. {used}
+#. and {limit} are sizes in GB.
+#: templates/info.html:825
+#, fuzzy
+msgid "Plan:"
+msgstr "Bermain"
+
+#: templates/info.html:826
+#, python-format
+msgid "%(used)s GB of %(limit)s GB of songs used"
+msgstr ""
+
+#: templates/info.html:826
+#, python-format
+msgid "%(used)s GB of songs"
+msgstr ""
+
 #. Header of the information section about the System stats.
-#: templates/info.html:777
+#: templates/info.html:833
 msgid "System stats"
 msgstr "Statistik Sistem"
 
 #. The CPU usage of the computer running Pikaraoke.
-#: templates/info.html:783
+#: templates/info.html:839
 msgid "CPU:"
 msgstr "CPU:"
 
 # auto-translated
-#: templates/info.html:783 templates/info.html:785 templates/info.html:787
+#: templates/info.html:839 templates/info.html:841 templates/info.html:843
 msgid "Loading..."
 msgstr "Memuat..."
 
 #. The disk usage of the computer running Pikaraoke. Used by downloaded songs.
-#: templates/info.html:785
+#: templates/info.html:841
 msgid "Disk Usage:"
 msgstr "Penggunaan Disk:"
 
 #. The memory (RAM) usage of the computer running Pikaraoke.
-#: templates/info.html:787
+#: templates/info.html:843
 msgid "Memory:"
 msgstr "Memori:"
 
 #. Title of the updates section.
-#: templates/info.html:794
+#: templates/info.html:850
 msgid "Updates"
 msgstr "Pembaruan"
 
 #. Label for the YT-DLP update on the updates section
-#: templates/info.html:799
+#: templates/info.html:855
 msgid "YT-DLP update"
 msgstr "Perbarui yt-dlp"
 
 # auto-translated
 #. Text explaining why you might want to update yt-dlp.
-#: templates/info.html:804
+#: templates/info.html:860
 #, python-format
 msgid ""
 "\n"
@@ -1593,38 +1580,40 @@ msgstr ""
 
 #. Text for the link which will try and update yt-dlp on the machine running
 #. Pikaraoke.
-#: templates/info.html:810
+#: templates/info.html:866
 msgid "Update yt-dlp"
 msgstr "Perbarui yt-dlp"
 
 # auto-translated
 #. Help text which explains why updating yt-dlp can fail. The log is a file on
 #. the machine running Pikaraoke.
-#: templates/info.html:814
+#: templates/info.html:870
+#, python-format
 msgid ""
 "* This update link above may fail if you don't have proper file permissions.\n"
-"\t\t\t\t\t\t\tCheck the pikaraoke log for errors."
+"\t\t\t\t\t\t\tCheck the %(site_title)s log for errors."
 msgstr ""
 "* Tautan pembaruan di atas mungkin gagal jika Anda tidak memiliki izin file yang tepat.\n"
-"\t\t\t\t\t\t\tPeriksa log pikaraoke untuk kesalahan."
+"\t\t\t\t\t\t\tPeriksa log %(site_title)s untuk kesalahan."
 
-#. Title of the updates section.
-#: templates/info.html:827
+#. Title of the section holding options that only apply to a Raspberry Pi.
+#: templates/info.html:883
 msgid "Other"
 msgstr "Lainnya"
 
 #. Title for section containing a few other options on the Info page.
 #. Text for button
-#: templates/info.html:832 templates/info.html:844
+#: templates/info.html:888 templates/info.html:900
 msgid "Expand Raspberry Pi filesystem"
 msgstr "Perluas partisi Raspberry Pi"
 
 # auto-translated
 #. Explainitory text which explains why you might want to expand the
 #. filesystem.
-#: templates/info.html:837
+#: templates/info.html:893
+#, fuzzy
 msgid ""
-"If you just installed the pre-built pikaraoke pi image and your SD card is larger than 4GB,\n"
+"If you installed from a pre-built Raspberry Pi image and your SD card is larger than 4GB,\n"
 "\t\t\t\t\t\t\tyou may want to expand the filesystem to utilize the remaining space. You only need to do this once.\n"
 "\t\t\t\t\t\t\tThis will reboot the system."
 msgstr ""
@@ -1634,7 +1623,7 @@ msgstr ""
 
 # auto-translated
 #. Explains the admin password field when a password is already set.
-#: templates/info.html:859
+#: templates/info.html:915
 msgid ""
 "Change the administrator password. Every other device will need to log in "
 "again."
@@ -1643,7 +1632,7 @@ msgstr ""
 
 # auto-translated
 #. Explains the admin password field when no password has been set.
-#: templates/info.html:862
+#: templates/info.html:918
 msgid ""
 "Everyone on the network is an admin. Set a password to keep the player "
 "controls, song editing and shutdown to yourself."
@@ -1653,29 +1642,29 @@ msgstr ""
 
 # auto-translated
 #. Button which saves a new administrator password.
-#: templates/info.html:871
+#: templates/info.html:927
 msgid "Save password"
 msgstr "Simpan kata sandi"
 
 # auto-translated
 #. Button which removes the administrator password, making everyone an admin.
-#: templates/info.html:880
+#: templates/info.html:936
 msgid "Clear password"
 msgstr "Hapus kata sandi"
 
 #. Button which logs the user out of admin mode.
-#: templates/info.html:884
+#: templates/info.html:940
 msgid "Log out"
 msgstr "Keluar"
 
 #. Title of the section on shutting down / turning off the machine running
 #. Pikaraoke.
-#: templates/info.html:893
+#: templates/info.html:949
 msgid "Shutdown"
 msgstr "Matikan"
 
 #. Explainitory text which explains why to use the shutdown link.
-#: templates/info.html:900
+#: templates/info.html:956
 msgid ""
 "Don't just pull the plug! Always shut down your server properly to avoid "
 "data corruption."
@@ -1685,18 +1674,18 @@ msgstr ""
 
 #. Text for button which turns off Pikaraoke for everyone using it at your
 #. house.
-#: templates/info.html:907
+#: templates/info.html:963
 #, python-format
 msgid "Quit %(site_title)s"
 msgstr "Keluar dari %(site_title)s"
 
 #. Text for button which reboots the machine running Pikaraoke.
-#: templates/info.html:911
+#: templates/info.html:967
 msgid "Reboot System"
 msgstr "Restart Sistem"
 
 #. Text for button which turn soff the machine running Pikaraoke.
-#: templates/info.html:914
+#: templates/info.html:970
 msgid "Shutdown System"
 msgstr "Matikan Sistem"
 
@@ -1764,14 +1753,12 @@ msgstr "Mempersiapkan"
 # auto-translated
 #. Download phase shown while the video stream is transferring.
 #: templates/queue.html:182
-#, python-format
 msgid "Downloading video"
 msgstr "Mengunduh video"
 
 # auto-translated
 #. Download phase shown while the separate audio stream is transferring.
 #: templates/queue.html:184
-#, python-format
 msgid "Downloading audio"
 msgstr "Mengunduh audio"
 
@@ -1790,7 +1777,7 @@ msgstr "Selesai"
 # auto-translated
 #. Tag on the active download showing which attempt is running, e.g. "Retrying
 #. 2/5".
-#: templates/queue.html:191 templates/queue.html:275
+#: templates/queue.html:191 templates/queue.html:274
 msgid "Retrying"
 msgstr "Mencoba lagi"
 
@@ -1799,48 +1786,48 @@ msgstr "Mencoba lagi"
 msgid "ETA"
 msgstr "ETA"
 
-#: templates/queue.html:271
+#: templates/queue.html:270
 msgid "Pending downloads"
 msgstr "Download tertunda"
 
-#: templates/queue.html:276
+#: templates/queue.html:275
 msgid "Queued"
 msgstr "Dalam antrian"
 
-#: templates/queue.html:288
+#: templates/queue.html:287
 msgid "Download Errors"
 msgstr "Kesalahan Download"
 
-#: templates/queue.html:297
+#: templates/queue.html:296
 msgid "Failed"
 msgstr "Gagal"
 
 # auto-translated
-#: templates/queue.html:298
+#: templates/queue.html:297
 msgid "Retry"
 msgstr "Mencoba kembali"
 
-#: templates/queue.html:299
+#: templates/queue.html:298
 msgid "Dismiss"
 msgstr "Tutup"
 
-#: templates/queue.html:371
+#: templates/queue.html:370
 msgid "Drag to reorder"
 msgstr "Seret untuk mengatur ulang urutan"
 
-#: templates/queue.html:411
+#: templates/queue.html:410
 msgid "The queue is empty"
 msgstr "Antrian kosong"
 
-#: templates/queue.html:509
+#: templates/queue.html:503
 msgid "Play"
 msgstr "Putar"
 
-#: templates/queue.html:511 templates/queue.html:629
+#: templates/queue.html:505 templates/queue.html:623
 msgid "Pause"
 msgstr "Jeda"
 
-#: templates/queue.html:571
+#: templates/queue.html:565
 msgid ""
 "Add <input id=\"randomNumberInput\" class=\"input mx-2 p-2\" "
 "pattern=\"\\d*\" maxlength=\"2\" value=\"3\" min=\"1\" max=\"99\" "
@@ -1850,51 +1837,51 @@ msgstr ""
 "pattern=\"\\d*\" maxlength=\"2\" value=\"3\" min=\"1\" max=\"99\" "
 "style=\"width: 42px\" /> lagu acak"
 
-#: templates/queue.html:575
+#: templates/queue.html:569
 msgid "Clear all"
 msgstr "Hapus semua"
 
-#: templates/queue.html:589
+#: templates/queue.html:583
 msgid "Play Next"
 msgstr "Putar Selanjutnya"
 
-#: templates/queue.html:589
+#: templates/queue.html:583
 msgid "Move to Top"
 msgstr "Pindah ke atas"
 
-#: templates/queue.html:593
+#: templates/queue.html:587
 msgid "Move Up"
 msgstr "Naik satu"
 
-#: templates/queue.html:597
+#: templates/queue.html:591
 msgid "Move Down"
 msgstr "Turun satu"
 
-#: templates/queue.html:601
+#: templates/queue.html:595
 msgid "Move to Bottom"
 msgstr "Pindah ke bawah"
 
 # auto-translated
 #. Menu item which changes the name of a session that already has one.
 #. Button which changes the name of the session that is currently running.
-#: templates/queue.html:605 templates/sessions.html:43
+#: templates/queue.html:599 templates/sessions.html:43
 #: templates/sessions.html:650
 msgid "Rename"
 msgstr "Ganti nama"
 
-#: templates/queue.html:609
+#: templates/queue.html:603
 msgid "Remove from Queue"
 msgstr "Hapus dari antrian"
 
-#: templates/queue.html:625
+#: templates/queue.html:619
 msgid "Restart"
 msgstr "Putar ulang"
 
-#: templates/queue.html:633
+#: templates/queue.html:627
 msgid "Skip"
 msgstr "Lewati"
 
-#: templates/queue.html:641
+#: templates/queue.html:635
 msgid "Download queue"
 msgstr "Antrian download"
 
@@ -2191,11 +2178,11 @@ msgstr "Permainan yang jelas"
 msgid "Delete session"
 msgstr "Hapus sesi"
 
-#: templates/splash.html:24
+#: templates/splash.html:25
 msgid "Connection lost. Is the server still running?"
 msgstr "Koneksi terputus. Apakah server masih berjalan?"
 
-#: templates/splash.html:25
+#: templates/splash.html:26
 msgid ""
 "This browser is not fully supported. You may experience streaming issues. "
 "Please use Chrome/Safari/Firefox/Edge for best results."
@@ -2204,12 +2191,12 @@ msgstr ""
 "streaming. Gunakan Chrome, Safari, Firefox, atau Edge untuk hasil terbaik."
 
 #. Label for the next song to be played in the queue.
-#: templates/splash.html:94
+#: templates/splash.html:96
 msgid "Up next:"
 msgstr "Selanjutnya:"
 
 #. Label for the next singer in the queue.
-#: templates/splash.html:101
+#: templates/splash.html:103
 msgid "Next singer:"
 msgstr "Penyanyi berikutnya:"
 
