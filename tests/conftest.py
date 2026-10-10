@@ -13,8 +13,12 @@ from pikaraoke.lib.events import EventSystem
 from pikaraoke.lib.preference_manager import PreferenceManager
 from pikaraoke.lib.queue_manager import QueueManager
 from pikaraoke.lib.song_manager import SongManager
+from pikaraoke.lib.subscription import Subscription, install_subscription_gate
 
 PIKARAOKE_PACKAGE = Path(__file__).resolve().parent.parent / "pikaraoke"
+
+# Never written: the routes run as a self-hosted install, with no plan.
+NO_SUBSCRIPTION_FILE = str(PIKARAOKE_PACKAGE / "no-subscription.json")
 
 
 # What base.html itself url_for()s on every render, independent of which
@@ -86,6 +90,8 @@ def make_route_app(blueprint, linked_endpoints, admin: bool = True):
         active_session_name=lambda: "",
     )
     install_auth_gate(app)
+    app.config["SUBSCRIPTION"] = Subscription(NO_SUBSCRIPTION_FILE)
+    install_subscription_gate(app)
     return app
 
 
@@ -113,6 +119,8 @@ def real_app():
     for bp in INTERNAL_BLUEPRINTS:
         app.register_blueprint(bp)
     document_auth(app, api)
+    app.config["SUBSCRIPTION"] = Subscription(NO_SUBSCRIPTION_FILE)
+    install_subscription_gate(app)
     return app
 
 

@@ -53,6 +53,14 @@
       errorLabel: {{ _("Error") | tojson }}
     };
 
+    // 402 is the subscription refusing (read-only, or the plan's storage is full).
+    // One handler for every request, so no control fails without saying why.
+    $(document).ajaxError(function (event, xhr) {
+      if (xhr.status === 402 && xhr.responseJSON && xhr.responseJSON.error) {
+        showNotification(xhr.responseJSON.error, "is-danger", 6000);
+      }
+    });
+
     function generateRandomString(length) {
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
       let result = '';
@@ -529,6 +537,13 @@
       <span class="session-ribbon-dot" aria-hidden="true"></span>
       <span class="session-ribbon-text">{{ session_name }}</span>
     </div>
+
+    {# Written by the hosting owner app; a self-hosted install never shows it. #}
+    {% if subscription.mode in ("warn", "read_only") %}
+    <div id="subscription-notice" class="notification {{ 'is-danger' if subscription.is_read_only else 'is-warning' }}" style="margin: 5px 0 0;">
+      {{ subscription.message }}
+    </div>
+    {% endif %}
 
     {% if get_flashed_messages() %}
     {% for category, message in get_flashed_messages(with_categories=true) %}

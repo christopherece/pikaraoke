@@ -8,7 +8,12 @@ from flask_smorest import Blueprint
 from marshmallow import Schema, fields
 
 from pikaraoke.lib.auth import public
-from pikaraoke.lib.current_app import broadcast_event, get_karaoke_instance
+from pikaraoke.lib.current_app import (
+    broadcast_event,
+    get_karaoke_instance,
+    get_subscription,
+)
+from pikaraoke.routes.search_api import storage_full_response
 
 _ = flask_babel.gettext
 
@@ -102,9 +107,19 @@ def queue_edit(query):
 
 def _do_enqueue(song: str, user: str) -> Response:
     k = get_karaoke_instance()
+    song_title = k.song_manager.display_name_from_path(song)
+    # The path comes from the client, so it may name a file this machine does not
+    # have, or one that is not a song at all.
+    if song not in k.song_manager.songs:
+        # MSG: Message shown when someone tries to queue a song this library does not have.
+        return jsonify(
+            {
+                "song": song_title,
+                "success": [False, _("That song is not in the library: %s") % song_title],
+            }
+        )
     rc = k.queue_manager.enqueue(song, user)
     broadcast_event("queue_update")
-    song_title = k.song_manager.display_name_from_path(song)
     return jsonify({"song": song_title, "success": rc})
 
 
@@ -139,6 +154,8 @@ def delete_download_error(error_id):
 def retry_download_error(error_id):
     """Re-queue a failed download."""
     k = get_karaoke_instance()
+    if get_subscription().storage_full(k.download_path):
+        return storage_full_response()
     if k.download_manager.retry_error(error_id):
         return jsonify({"success": True})
     return jsonify({"success": False, "error": "Error not found"}), 404

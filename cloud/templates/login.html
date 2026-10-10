@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="panel" style="max-width: 380px; margin: 40px auto;">
+  {% if configured %}
+  <form method="post">
+    <label>Owner password
+      <input type="password" name="password" autofocus required>
+    </label>
+    <p><button class="primary" type="submit">Log in</button></p>
+  </form>
+  {% else %}
+  <p>OWNER_PASSWORD is not set, so nobody can log in. Set it in <code>cloud/.env</code> and restart.</p>
+  {% endif %}
+</div>
+{% endblock %}

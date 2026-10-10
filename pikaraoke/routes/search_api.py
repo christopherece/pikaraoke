@@ -1,12 +1,16 @@
 """API for previewing and downloading YouTube results."""
 
+import flask_babel
 from flask import jsonify
 from flask_smorest import Blueprint
 from marshmallow import Schema, fields
 
 from pikaraoke.lib.auth import public
-from pikaraoke.lib.current_app import get_karaoke_instance
+from pikaraoke.lib.current_app import get_karaoke_instance, get_subscription
+from pikaraoke.lib.subscription import refuse
 from pikaraoke.lib.youtube_dl import get_stream_url
+
+_ = flask_babel.gettext
 
 search_api_bp = Blueprint("search_api", __name__)
 
@@ -45,6 +49,8 @@ def preview(query):
 def download(form):
     """Download a video from YouTube."""
     k = get_karaoke_instance()
+    if get_subscription().storage_full(k.download_path):
+        return storage_full_response()
     song = form["song_url"]
     user = form["song_added_by"]
     title = form["song_title"]
@@ -54,3 +60,13 @@ def download(form):
     k.download_manager.queue_download(song, queue, user, title)
 
     return jsonify({"status": "ok"})
+
+
+def storage_full_response():
+    """Refuse a download because the hosting plan's storage is used up."""
+    # MSG: Shown when the venue's hosting plan has no room left for another song.
+    return refuse(
+        _(
+            "Your plan's song storage is full. Delete some songs, or ask your provider for a bigger plan."
+        )
+    )

@@ -13,6 +13,7 @@ from pikaraoke.lib.current_app import (
     get_admin_auth,
     get_karaoke_instance,
     get_site_name,
+    get_subscription,
     is_admin,
 )
 from pikaraoke.lib.get_platform import (
@@ -21,6 +22,7 @@ from pikaraoke.lib.get_platform import (
     is_linux,
     is_running_in_docker,
 )
+from pikaraoke.lib.subscription import directory_size
 
 _ = flask_babel.gettext
 
@@ -42,6 +44,9 @@ def info():
     suggestion_name_order = k.preferences.get_or_default("suggestion_name_order")
     # yt-dlp
     youtubedl_version = k.youtubedl_version
+    # Only a hosted venue has a plan; walking the library is wasted work otherwise.
+    hosted = bool(get_subscription().state().plan_name)
+    songs_storage_bytes = directory_size(k.download_path) if hosted else None
 
     return render_template(
         "info.html",
@@ -58,6 +63,7 @@ def info():
         youtubedl_version=youtubedl_version,
         js_runtime=get_installed_js_runtime(),
         pikaraoke_version=VERSION,
+        songs_storage_bytes=songs_storage_bytes,
         cpu=None,
         memory=None,
         disk=None,

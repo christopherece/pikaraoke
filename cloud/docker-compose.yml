@@ -1,0 +1,74 @@
+# Karaoke ni Lakay Cloud: the owner page and every hosted venue.
+#
+#   cd cloud
+#   cp .env.example .env    # set BASE_DOMAIN, OWNER_PASSWORD, HOST_DATA_DIR
+#   docker compose up -d --build
+#
+# The owner app starts one container per venue (knl-<venue>) itself; Traefik
+# routes <venue>.BASE_DOMAIN to it from the labels the owner app sets. After a
+# git pull, the same command rebuilds and the owner app moves every venue onto
+# the new image.
+
+name: karaoke-cloud
+
+services:
+  # Builds the image every venue runs. It has nothing to run itself.
+  venue-image:
+    build:
+      context: ..
+      dockerfile: build_scripts/docker/Dockerfile
+    image: karaoke-ni-lakay:latest
+    scale: 0
+
+  owner:
+    build:
+      context: .
+      additional_contexts:
+        karaoke: service:venue-image
+    image: karaoke-ni-lakay-owner:latest
+    container_name: karaoke-owner
+    environment:
+      - BASE_DOMAIN=${BASE_DOMAIN:?set BASE_DOMAIN in .env}
+      - OWNER_PASSWORD=${OWNER_PASSWORD:?set OWNER_PASSWORD in .env}
+      - OWNER_CONTACT=${OWNER_CONTACT:-}
+      - HOST_DATA_DIR=${HOST_DATA_DIR:?set HOST_DATA_DIR in .env}
+      - PUBLIC_SCHEME=${PUBLIC_SCHEME:-https}
+      - PUBLIC_PORT=${PUBLIC_PORT:-}
+      - TZ=${TZ:-Asia/Manila}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      # The same path inside and out: venue containers are given host paths.
+      - ${HOST_DATA_DIR}:${HOST_DATA_DIR}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.knl-owner.rule=Host(`owner.${BASE_DOMAIN}`)
+      - traefik.http.services.knl-owner.loadbalancer.server.port=5555
+    networks: [venues]
+    restart: unless-stopped
+    logging: &logging
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  traefik:
+    image: traefik:v3.6.2
+    container_name: karaoke-traefik
+    command:
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --providers.docker.network=karaoke-venues
+      - --entrypoints.web.address=:80
+    ports:
+      # Behind Nginx Proxy Manager on the same server, 172.17.0.1:8088 keeps it
+      # off the public interface; see docs/README.md.
+      - "${HTTP_BIND:-8088}:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks: [venues]
+    restart: unless-stopped
+    logging: *logging
+
+networks:
+  venues:
+    name: karaoke-venues

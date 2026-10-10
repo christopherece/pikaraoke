@@ -29,8 +29,18 @@ from pikaraoke.lib.browser import Browser
 from pikaraoke.lib.current_app import get_karaoke_instance, is_admin
 from pikaraoke.lib.ffmpeg import is_ffmpeg_installed
 from pikaraoke.lib.file_resolver import delete_tmp_dir
-from pikaraoke.lib.get_platform import get_platform, has_js_runtime, is_windows
+from pikaraoke.lib.get_platform import (
+    get_data_directory,
+    get_platform,
+    has_js_runtime,
+    is_windows,
+)
 from pikaraoke.lib.song_manager import SongManager
+from pikaraoke.lib.subscription import (
+    SUBSCRIPTION_FILE,
+    Subscription,
+    install_subscription_gate,
+)
 from pikaraoke.lib.url_prefix import BasePathMiddleware
 from pikaraoke.lib.youtube_dl import upgrade_youtubedl
 from pikaraoke.routes import API_BLUEPRINTS, INTERNAL_BLUEPRINTS
@@ -111,6 +121,8 @@ for bp in INTERNAL_BLUEPRINTS:
 
 # After registration, so every endpoint the gate reads exists.
 install_auth_gate(app)
+app.config["SUBSCRIPTION"] = Subscription(os.path.join(get_data_directory(), SUBSCRIPTION_FILE))
+install_subscription_gate(app)
 document_auth(app, api)
 
 

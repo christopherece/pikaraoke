@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% set mode_label = {"full": "Active", "warn": "Needs attention", "read_only": "Read-only"} %}
+{% set status_label = {"trial": "Free trial", "active": "Paying", "read_only": "Read-only"} %}
+
+{% block header_action %}
+<form method="post" action="{{ url_for('logout') }}"><button type="submit">Log out</button></form>
+{% endblock %}
+
+{% block content %}
+<div class="stats">
+  <div class="stat"><b>{{ venues|length }}</b>Venues</div>
+  <div class="stat"><b>{{ venues|selectattr("status", "eq", "active")|rejectattr("access.mode", "eq", "read_only")|list|length }}</b>Paying</div>
+  <div class="stat"><b>{{ venues|selectattr("status", "eq", "trial")|rejectattr("access.mode", "eq", "read_only")|list|length }}</b>On trial</div>
+  <div class="stat"><b>{{ venues|selectattr("needs_attention")|list|length }}</b>Need attention</div>
+  <div class="stat"><b>{{ venues|selectattr("access.mode", "eq", "read_only")|list|length }}</b>Read-only</div>
+  {# Songs are video files, so the disk is what runs out first. #}
+  <div class="stat {% if disk_free < disk_total * 0.15 %}alert{% endif %}"><b>{{ fmt_size(disk_free) }}</b>Disk free of {{ fmt_size(disk_total) }}</div>
+</div>
+
+<div class="panel">
+  <details {% if not venues %}open{% endif %}>
+    <summary>+ Add a venue</summary>
+    <form class="fields" method="post" action="{{ url_for('add_venue') }}">
+      <label>Venue name <input name="name" required maxlength="80" placeholder="Lakay Bar &amp; Grill"></label>
+      <label>Web address <input name="slug" required pattern="[a-z0-9][a-z0-9\-]{0,38}[a-z0-9]?" placeholder="lakaybar"></label>
+      <label>Plan
+        <select name="plan">
+          {% for key, plan in plans.items() %}
+          <option value="{{ key }}">{{ plan.name }} ({{ "%d GB of songs"|format(plan.max_storage_gb) if plan.max_storage_gb else "no storage limit" }})</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>Free trial (days) <input name="trial_days" type="number" min="1" max="365" value="{{ trial_extension_days }}"></label>
+      <label>Admin password <input name="admin_password" type="text" required minlength="6" autocomplete="off"></label>
+      <label>Contact (optional) <input name="contact" maxlength="120" placeholder="owner@example.com"></label>
+      <div><button class="primary" type="submit">Add venue</button></div>
+    </form>
+    <p class="muted">The venue will be at <b>&lt;web address&gt;.{{ base_domain }}</b>. Its host logs in to Settings with the admin password.</p>
+  </details>
+</div>
+
+{% for v in venues %}
+<div class="panel" id="{{ v.slug }}">
+  <div class="venue-head">
+    <div>
+      <h2>{{ v.name }}</h2>
+      <a href="{{ v.url }}" target="_blank" rel="noopener">{{ v.url.split("://")[1] }}</a>
+    </div>
+    <div class="badges">
+      <span class="badge {{ v.access.mode }}">{{ mode_label[v.access.mode] }}</span>
+      <span class="badge">{{ status_label[v.status] }}</span>
+      <span class="badge">{{ v.plan_name }}</span>
+      {% if v.container != "running" %}<span class="badge down">Container {{ v.container }}</span>{% endif %}
+    </div>
+  </div>
+
+  {% if v.access.mode in ("warn", "read_only") %}
+  <div class="notice {{ v.access.mode }}">{{ v.access.message }}</div>
+  {% endif %}
+
+  <div class="grid">
+    <div><small>Trial ends</small>{{ fmt_date(v.trial_ends_at) if v.trial_ends_at else "—" }}</div>
+    <div><small>Paid until</small>{{ fmt_date(v.paid_until) if v.paid_until else "—" }}</div>
+    <div><small>Song storage</small>{{ fmt_size(v.storage_bytes) }}{% if v.max_storage_gb %} of {{ v.max_storage_gb }} GB{% endif %}</div>
+    <div><small>Songs</small>{{ v.song_count }}</div>
+    <div><small>Last song played</small>{{ v.last_played[:16] if v.last_played else "—" }}</div>
+    <div><small>Contact</small>{{ v.contact or "—" }}</div>
+    <div><small>Added</small>{{ fmt_date(v.created_at) }}</div>
+  </div>
+
+  <div class="actions">
+    <form method="post" action="{{ url_for('venue_action', slug=v.slug, action='paid') }}"><input type="hidden" name="months" value="1"><button class="primary">&check; Paid 1 month</button></form>
+    <form method="post" action="{{ url_for('venue_action', slug=v.slug, action='paid') }}"><input type="hidden" name="months" value="12"><button>&check; Paid 1 year</button></form>
+    <form method="post" action="{{ url_for('venue_action', slug=v.slug, action='extend-trial') }}"><button>+{{ trial_extension_days }} days trial</button></form>
+    {% if v.status == "read_only" %}
+    <form method="post" action="{{ url_for('venue_action', slug=v.slug, action='turn-on') }}"><button>Turn back on</button></form>
+    {% else %}
+    <form method="post" action="{{ url_for('venue_action', slug=v.slug, action='read-only') }}"><button class="danger">Make read-only</button></form>
+    {% endif %}
+    <form method="post" action="{{ url_for('venue_action', slug=v.slug, action='restart') }}"><button>Restart</button></form>
+  </div>
+
+  <details>
+    <summary>Edit</summary>
+    <form class="fields" method="post" action="{{ url_for('venue_action', slug=v.slug, action='edit') }}">
+      <label>Venue name <input name="name" value="{{ v.name }}" required maxlength="80"></label>
+      <label>Plan
+        <select name="plan">
+          {% for key, plan in plans.items() %}<option value="{{ key }}" {% if key == v.plan %}selected{% endif %}>{{ plan.name }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>Trial ends <input name="trial_ends_at" type="date" value="{{ v.trial_ends_at or '' }}"></label>
+      <label>Paid until <input name="paid_until" type="date" value="{{ v.paid_until or '' }}"></label>
+      <label>Contact <input name="contact" value="{{ v.contact }}" maxlength="120"></label>
+      <div><button class="primary" type="submit">Save</button></div>
+    </form>
+  </details>
+
+  <details>
+    <summary>Reset admin password</summary>
+    <form class="fields" method="post" action="{{ url_for('venue_action', slug=v.slug, action='admin-password') }}">
+      <label>New admin password <input name="password" type="text" required minlength="6" autocomplete="off"></label>
+      <div><button class="primary" type="submit">Set password</button></div>
+    </form>
+    <p class="muted">The venue restarts to pick it up, which stops a song that is playing.</p>
+  </details>
+</div>
+{% endfor %}
+{% endblock %}

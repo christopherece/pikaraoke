@@ -8,6 +8,7 @@ from flask_socketio import emit
 
 from pikaraoke.karaoke import Karaoke
 from pikaraoke.lib.admin_auth import AdminAuth
+from pikaraoke.lib.subscription import Subscription
 
 
 def is_admin() -> bool:
@@ -32,6 +33,11 @@ def get_karaoke_instance() -> Karaoke:
 def get_admin_auth() -> AdminAuth:
     """Get the current app's admin authentication store."""
     return current_app.config["ADMIN_AUTH"]
+
+
+def get_subscription() -> Subscription:
+    """Get the hosted subscription state, which is unlimited when self-hosted."""
+    return current_app.config["SUBSCRIPTION"]
 
 
 def get_site_name() -> str:

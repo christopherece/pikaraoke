@@ -819,6 +819,12 @@
 					<li><u>{% trans %}FFmpeg version:{% endtrans %}</u> {{ ffmpeg_version }} {% if not is_transpose_enabled %} (missing lib-rubberband, pitch shift is not supported) {% endif %}</li>
 					{# MSG: The version of Pikaraoke running right now. #}
 					<li><u>{% trans %}{{ site_title }} version:{% endtrans %}</u> {{ pikaraoke_version }}</li>
+					{% if subscription.plan_name %}
+					{% set used_gb = "%.1f"|format(songs_storage_bytes / 1e9) %}
+					{# MSG: The venue's hosting plan and how much of its song storage is used. {used} and {limit} are sizes in GB. #}
+					<li><u>{% trans %}Plan:{% endtrans %}</u> {{ subscription.plan_name }} ·
+					{% if subscription.max_storage_bytes %}{% set limit_gb = "%.0f"|format(subscription.max_storage_bytes / 1e9) %}{% trans used=used_gb, limit=limit_gb %}{{ used }} GB of {{ limit }} GB of songs used{% endtrans %}{% else %}{% trans used=used_gb %}{{ used }} GB of songs{% endtrans %}{% endif %}</li>
+					{% endif %}
 					</ul>
 				</div>
 			</div>

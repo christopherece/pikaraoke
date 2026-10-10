@@ -25,3 +25,5 @@ qrcode.png
 
 # Script output
 scripts/itunes_report.csv
+/cloud/.env
+/cloud/data/

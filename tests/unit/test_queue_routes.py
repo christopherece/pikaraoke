@@ -273,3 +273,39 @@ class TestQueueEditSocketUpdates:
         assert qm.queue[3]["file"] == "/songs/song2.mp4"
         assert len(queue_updates) == 1, "queue_update event should be emitted once"
         assert len(now_playing_updates) == 1, "now_playing_update event should be emitted once"
+
+
+class TestEnqueueStaysInTheLibrary:
+    """The queued path comes from the client, so it must name a song this library holds."""
+
+    def _enqueue(self, client, library, song):
+        queue = MagicMock()
+        queue.enqueue.return_value = [True, "Song added to the queue: Title"]
+        k = MagicMock(queue_manager=queue)
+        k.song_manager.songs = library
+        k.song_manager.display_name_from_path.return_value = "Title"
+        with (
+            patch("pikaraoke.routes.queue_api.get_karaoke_instance", return_value=k),
+            patch("pikaraoke.routes.queue_api.broadcast_event"),
+        ):
+            response = client.post(
+                "/api/enqueue", data={"song_to_add": song, "song_added_by": "Ana"}
+            )
+        return response.json, queue
+
+    def test_queues_a_song_in_the_library(self, client):
+        data, queue = self._enqueue(
+            client, {"/songs/a---aaaaaaaaaaa.mp4"}, "/songs/a---aaaaaaaaaaa.mp4"
+        )
+
+        assert data["success"][0] is True
+        queue.enqueue.assert_called_once_with("/songs/a---aaaaaaaaaaa.mp4", "Ana")
+
+    def test_refuses_a_path_the_library_does_not_hold(self, client):
+        data, queue = self._enqueue(
+            client, {"/songs/a---aaaaaaaaaaa.mp4"}, "/home/pikaraoke/.pikaraoke/config.ini"
+        )
+
+        assert data["success"][0] is False
+        assert "not in the library" in data["success"][1]
+        queue.enqueue.assert_not_called()
